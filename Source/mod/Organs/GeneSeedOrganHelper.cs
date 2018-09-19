@@ -47,8 +47,6 @@ namespace GeneSeed.Organs
             {
                 geneSeedAvailable.Severity += .0005f;
             }
-            
-            //TODO ProgenoidGlands
         }
     }
 }

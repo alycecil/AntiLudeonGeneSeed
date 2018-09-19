@@ -7,7 +7,7 @@
         <description>A human, modified by gene engineering and designed evolutionary pressures.</description>
         <statBases>
             <MarketValue>1750</MarketValue>
-            <MoveSpeed>5.8</MoveSpeed>
+            <MoveSpeed>6.2</MoveSpeed>
             <Flammability>0.2</Flammability>
             <ComfyTemperatureMin>-16</ComfyTemperatureMin>
             <ComfyTemperatureMax>36</ComfyTemperatureMax>
@@ -19,7 +19,7 @@
                 <capacities>
                     <li>Blunt</li>
                 </capacities>
-                <power>12.2</power>
+                <power>15.2</power>
                 <cooldownTime>2</cooldownTime>
                 <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
                 <surpriseAttack>
@@ -36,7 +36,7 @@
                 <capacities>
                     <li>Blunt</li>
                 </capacities>
-                <power>12.2</power>
+                <power>15.2</power>
                 <cooldownTime>2</cooldownTime>
                 <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
                 <surpriseAttack>
@@ -53,7 +53,7 @@
                 <capacities>
                     <li>Bite</li>
                 </capacities>
-                <power>9.2</power>
+                <power>19.2</power>
                 <cooldownTime>2</cooldownTime>
                 <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
                 <chanceFactor>0.07</chanceFactor>
@@ -63,7 +63,7 @@
                 <capacities>
                     <li>Blunt</li>
                 </capacities>
-                <power>10</power>
+                <power>14</power>
                 <cooldownTime>2</cooldownTime>
                 <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
                 <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
@@ -72,9 +72,9 @@
             <li>
                 <label>caustic spit</label>
                 <capacities>
-                    <li>Blunt</li>
+                    <li>Bite</li>
                 </capacities>
-                <power>20</power>
+                <power>80</power>
                 <cooldownTime>3</cooldownTime>
                 <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
                 <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
@@ -93,7 +93,7 @@
             <baseBodySize>1.5</baseBodySize>
             <baseHealthScale>10</baseHealthScale>
             <foodType>OmnivoreHuman</foodType>
-            <gestationPeriodDays>45</gestationPeriodDays>
+            <gestationPeriodDays>35</gestationPeriodDays>
             <meatMarketValue>0.8</meatMarketValue>
             <manhunterOnDamageChance>0.20</manhunterOnDamageChance>
             <manhunterOnTameFailChance>0.02</manhunterOnTameFailChance>
