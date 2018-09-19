@@ -56,6 +56,7 @@
         <stages>
             <li>
                 <painFactor>0.6</painFactor>
+                <hungerRateFactorOffset>0.2</hungerRateFactorOffset>
                 <capMods>
                     <li>
                         <capacity>Consciousness</capacity>
@@ -102,7 +103,7 @@
     <HediffDef>
         <defName>GeneSeedMutated</defName>
         <hediffClass>GeneSeed.GeneSeedMutationHediffWithComps</hediffClass>
-        <label>GeneSeed Alterations</label>
+        <label>Gene Seed Alterations</label>
         <defaultLabelColor>(0.5, 0.7, 0.45)</defaultLabelColor>
         <makesSickThought>false</makesSickThought>
         <initialSeverity>0.1</initialSeverity>
@@ -110,7 +111,7 @@
         <scenarioCanAdd>true</scenarioCanAdd>
         <tendable>false</tendable>
         <addedPartProps>
-            <partEfficiency>1.5</partEfficiency>
+            <partEfficiency>2</partEfficiency>
             <betterThanNatural>true</betterThanNatural>
         </addedPartProps>
         <comps>
@@ -120,8 +121,7 @@
         </comps>
         <stages>
             <li>
-                <label>Enhanced</label>
-                <hungerRateFactorOffset>0.2</hungerRateFactorOffset>
+                <label>Neophyte</label>
                 <painOffset>-0.025</painOffset>
                 <capMods>
                     <li>
@@ -139,12 +139,9 @@
                 </capMods>
             </li>
             <li>
-                <label>Beyond Enhanced</label>
+                <label>Astartes</label>
                 <minSeverity>0.301</minSeverity>
-                
                 <socialFightChanceFactor>0</socialFightChanceFactor>
-                <hungerRateFactorOffset>-0.5</hungerRateFactorOffset>
-                <vomitMtbDays>50</vomitMtbDays>
                 <capMods>
                     <li>
                         <capacity>Consciousness</capacity>
@@ -161,8 +158,9 @@
                 </capMods>
             </li>
             <li>
-                <label>Mutated</label>
+                <label>Praetorate</label>
                 <minSeverity>0.601</minSeverity>
+                <socialFightChanceFactor>0</socialFightChanceFactor>
                 <capMods>
                     <li>
                         <capacity>Consciousness</capacity>
@@ -184,7 +182,7 @@
                 </capMods>
             </li>
             <li>
-                <label>Hightly Mutated</label>
+                <label>Primarch</label>
                 <minSeverity>0.951</minSeverity>
                 <capMods>
                     <li>

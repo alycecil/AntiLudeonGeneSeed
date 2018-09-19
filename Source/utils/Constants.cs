@@ -7,6 +7,9 @@ namespace GeneSeed
     {
         public static readonly ThingDef GeneSeed = DefDatabase<ThingDef>.GetNamed("GeneSeed");
         public static HediffDef Mutated = HediffDef.Named("GeneSeedMutated");
+        
+        
+        //Order Matters inorder to be like the history
         public static List<BodyPartDef> AstarteBodyParts = new List<BodyPartDef>()
         {
             DefDatabase<BodyPartDef>.GetNamed("SecondaryHeart"),

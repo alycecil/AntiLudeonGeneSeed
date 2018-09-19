@@ -15,7 +15,9 @@
             system to maintain survival until he can be treated by the Chapter's Apothecaries.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>BloodPumpingSource</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>Ossmodula</defName>
@@ -35,7 +37,6 @@
             the Chapter's Apothecaries when they must perform surgeries on a Space Marine's body cavity.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
     </BodyPartDef>
     <BodyPartDef>
         <defName>Biscopea</defName>
@@ -53,7 +54,6 @@
             also regulate the hormonal changes caused to the new Astartes' body by many of the other gene-seed implants.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
     </BodyPartDef>
     <BodyPartDef>
         <defName>Haemastamen</defName>
@@ -67,7 +67,10 @@
             implants, the Ossmodula and Biscopea.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>BloodFiltrationKidney</li>
+            <li>BloodFiltrationLiver</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>LarramansOrgan</defName>
@@ -86,7 +89,9 @@
             as nearly invincible and so difficult to kill despite the terrible wounds they sometimes endure.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>BloodFiltrationLiver</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>CatalepseanNode</defName>
@@ -105,7 +110,6 @@
             Rynn's World.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
     </BodyPartDef>
     <BodyPartDef>
         <defName>Preomnor</defName>
@@ -122,7 +126,11 @@
             Astartes.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>MetabolismSource</li>
+            <li>BloodFiltrationKidney</li>
+            <li>BloodFiltrationLiver</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>Omophagea</defName>
@@ -144,7 +152,9 @@
             blood or flesh.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>ConsciousnessSource</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>MultiLung</defName>
@@ -159,7 +169,9 @@
             The Multi-lung has highly efficient toxin dispersal systems.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>BreathingSource</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>Occulobe</defName>
@@ -174,7 +186,9 @@
             humans and they can see in low-light conditions and near-darkness almost as well as in bright daylight.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>SightSource</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>LymansEar</defName>
@@ -190,7 +204,9 @@
             point.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>HearingSource</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>SusanMembrane</defName>
@@ -208,7 +224,11 @@
             Dark Angels Chapter, who was revived after 567 standard years in Sus-an hibernation.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>BreathingPathway</li>
+            <li>EatingPathway</li>
+            <li>TalkingPathway</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>Melanochrome</defName>
@@ -223,7 +243,10 @@
             Successor Chapters and the dark black skin and red eyes of the Salamanders.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>BloodFiltrationKidney</li>
+            <li>BloodFiltrationLiver</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>OoliticKidney</defName>
@@ -240,7 +263,9 @@
             other organs, implanted or natural.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>BloodFiltrationKidney</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>Neuroglottis</defName>
@@ -254,7 +279,9 @@
             smell or taste alone.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>BreathingPathway</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>Mucranoid</defName>
@@ -269,7 +296,9 @@
             deeply frigid environments.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>BreathingSourceCage</li>
+        </tags>
     </BodyPartDef>
     <BodyPartDef>
         <defName>BetchersGland</defName>
@@ -286,7 +315,6 @@
             Chapters that use those Primarchs' gene-seed.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
     </BodyPartDef>
     <BodyPartDef>
         <defName>ProgenoidGlands</defName>
@@ -312,7 +340,6 @@
             true immortality that Astartes will ever know.</description>
         <hitPoints>15</hitPoints>
         <skinCovered>false</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
     </BodyPartDef>
     <BodyPartDef>
         <defName>TheBlackCarapace</defName>
@@ -330,8 +357,10 @@
             their central nervous systems are not linked directly to their armour's Machine Spirit (artificial
             intelligence) as a Space Marine's would be, their Power Armour is markedly less efficient at providing
             protection or allowing them to manoeuvre in combat than that of an Astartes.</description>
-        <hitPoints>150</hitPoints>
+        <hitPoints>15</hitPoints>
         <skinCovered>true</skinCovered>
-        <destroyableByDamage>false</destroyableByDamage>
+        <tags>
+            <li>BreathingSourceCage</li>
+        </tags>
     </BodyPartDef>
 </Defs>
