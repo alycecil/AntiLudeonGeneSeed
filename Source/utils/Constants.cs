@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GeneSeed.Organs;
 using Verse;
 
 namespace GeneSeed
@@ -12,28 +13,28 @@ namespace GeneSeed
         //Order Matters inorder to be like the history
         public static List<BodyPartDef> AstarteBodyParts = new List<BodyPartDef>()
         {
-            DefDatabase<BodyPartDef>.GetNamed("SecondaryHeart"),
-            DefDatabase<BodyPartDef>.GetNamed("Ossmodula"),
-            DefDatabase<BodyPartDef>.GetNamed("Biscopea"),
-            DefDatabase<BodyPartDef>.GetNamed("Haemastamen"),
-            DefDatabase<BodyPartDef>.GetNamed("LarramansOrgan"),
+             GeneSeedOrganHelper.SecondaryHeart,
+             GeneSeedOrganHelper.Ossmodula,
+             GeneSeedOrganHelper.Biscopea,
+             GeneSeedOrganHelper.Haemastamen,
+             GeneSeedOrganHelper.LarramansOrgan,
             
-            DefDatabase<BodyPartDef>.GetNamed("CatalepseanNode"),
-            DefDatabase<BodyPartDef>.GetNamed("Preomnor"),
-            DefDatabase<BodyPartDef>.GetNamed("Omophagea"),
-            DefDatabase<BodyPartDef>.GetNamed("MultiLung"),
-            DefDatabase<BodyPartDef>.GetNamed("Occulobe"),
+             GeneSeedOrganHelper.CatalepseanNode,
+             GeneSeedOrganHelper.Preomnor,
+             GeneSeedOrganHelper.Omophagea,
+             GeneSeedOrganHelper.MultiLung,
+             GeneSeedOrganHelper.Occulobe,
             
-            DefDatabase<BodyPartDef>.GetNamed("LymansEar"),
-            DefDatabase<BodyPartDef>.GetNamed("SusanMembrane"),
-            DefDatabase<BodyPartDef>.GetNamed("Melanochrome"),
-            DefDatabase<BodyPartDef>.GetNamed("OoliticKidney"),
-            DefDatabase<BodyPartDef>.GetNamed("Neuroglottis"),
+             GeneSeedOrganHelper.LymansEar,
+             GeneSeedOrganHelper.SusanMembrane,
+             GeneSeedOrganHelper.Melanochrome,
+             GeneSeedOrganHelper.OoliticKidney,
+             GeneSeedOrganHelper.Neuroglottis,
             
-            DefDatabase<BodyPartDef>.GetNamed("Mucranoid"),
-            DefDatabase<BodyPartDef>.GetNamed("BetchersGland"),
-            DefDatabase<BodyPartDef>.GetNamed("ProgenoidGlands"),
-            DefDatabase<BodyPartDef>.GetNamed("TheBlackCarapace"),
+             GeneSeedOrganHelper.Mucranoid,
+             GeneSeedOrganHelper.BetchersGland,
+             GeneSeedOrganHelper.ProgenoidGlands,
+             GeneSeedOrganHelper.TheBlackCarapace,
             
         };
 

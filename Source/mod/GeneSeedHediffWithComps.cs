@@ -1,4 +1,5 @@
 using System.Linq;
+using GeneSeed.Organs;
 using RimWorld;
 using Verse;
 
@@ -6,9 +7,41 @@ namespace GeneSeed
 {
     public class GeneSeedHediffWithComps : HediffWithComps
     {
+        private int ticks = 0;
         public override void Tick()
         {
-            if (this.pawn.IsHashIntervalTick(1000)) //20x daily
+            ticks++;
+            
+            OrganFunctions();
+            
+            GeneSeedMutation();
+
+            RestoreOrgan();
+
+            ticks %= 20000000;
+        }
+
+        private void OrganFunctions()
+        {
+            if (ticks%250==0)
+            {
+                foreach (BodyPartDef astarteBodyPart in Constants.AstarteBodyParts)
+                {
+                    foreach (var part in pawn.def.race.body.GetPartsWithDef(astarteBodyPart))
+                    {
+                        if (part == null || pawn.health.hediffSet.PartIsMissing(part)) continue;
+
+                        GeneSeedOrganHelper.apply(pawn, part, this);
+                        
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void GeneSeedMutation()
+        {
+            if (ticks%1000==0) //20x daily
             {
                 if (Rand.MTBEventOccurs(0.5f, 60000f, 1000f)) //if is rare occurance
                 {
@@ -16,8 +49,11 @@ namespace GeneSeed
                     PawnHelper.mutate(pawn);
                 }
             }
+        }
 
-            if (!this.pawn.IsHashIntervalTick(10000) || !Rand.MTBEventOccurs(2f, 60000f, 1000f)) return;
+        private void RestoreOrgan()
+        {
+            if (ticks%1000!=0 || this.Severity < .11f) return;
             //time for a bonus organ
 
             bool didOne = false;
@@ -29,28 +65,41 @@ namespace GeneSeed
                 {
                     if (part == null || !pawn.health.hediffSet.PartIsMissing(part)) continue;
                     pawn.health.RestorePart(part);
-                    
+
                     didOne = true;
                     break;
                 }
+            }
+
+            if (didOne)
+            {
+                this.Severity *= 0.666f;
             }
         }
 
         public override void PostAdd(DamageInfo? dinfo)
         {
-            //Body change to Astarte
+            TransformPawn();
+
+            base.PostAdd(dinfo);
+        }
+
+        private void TransformPawn()
+        {
+//Body change to Astarte
 
             //only gaining parts
 
             var map = pawn.Map;
             RegionListersUpdater.DeregisterInRegions(pawn, map);
-
             if (Constants.Astarte != null)
             {
                 pawn.def = Constants.Astarte;
             }
 
             RegionListersUpdater.RegisterInRegions(pawn, map);
+
+            map.mapPawns.UpdateRegistryForPawn(pawn);
 
             //remove the 19
 
@@ -64,14 +113,17 @@ namespace GeneSeed
                     pawn.TakeDamage(new DamageInfo(surgicalCut, amount, armorPenetration, -1f, null, part, null,
                         DamageInfo.SourceCategory.ThingOrUnknown, null));
                 }
+
                 foreach (var hediff in pawn.health.hediffSet.GetHediffsTendable())
                 {
                     hediff.Tended(1f);
                 }
-                
             }
 
-            base.PostAdd(dinfo);
+            //save the pawn
+            pawn.ExposeData();
         }
+
+        public override bool ShouldRemove => false;
     }
 }

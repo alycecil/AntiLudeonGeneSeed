@@ -9,8 +9,9 @@ namespace GeneSeed
         {
             if (this.pawn.IsHashIntervalTick(1000)) //20x daily
             {
-                if (Rand.Bool)
+                if ( Rand.Value < 0.05f )
                 {
+                    //geneseed instability
                     if(Rand.Bool)
                         this.Severity /= 2f;
                     else
