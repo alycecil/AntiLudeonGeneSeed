@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingDef ParentName="DrugPillBase">
+        <defName>GeneSeed</defName>
+        <label>GeneSeed</label>
+        <description>
+            The GeneSeed opens the pathways to an ordinary human becoming far more modified than traditionally believe possible due to immune system requestions or shutdowns.
+        </description>
+        
+        <graphicData>
+            <texPath>Things/Item/Drug/Luciferium</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+            <color>(0,230,0)</color>
+        </graphicData>
+        <rotatable>false</rotatable>
+        <statBases>
+            <MarketValue>200</MarketValue>
+            <Mass>0.001</Mass>
+        </statBases>
+        <techLevel>Ultra</techLevel>
+        <ingestible>
+            <drugCategory>Medical</drugCategory>
+            <outcomeDoers>
+                <li Class="IngestionOutcomeDoer_GiveHediff">
+                    <hediffDef>GeenSeedAdaption</hediffDef>
+                    <severity>1.00</severity>
+                    <doToGeneratedPawnIfAddicted>true</doToGeneratedPawnIfAddicted>
+                </li>
+            </outcomeDoers>
+        </ingestible>
+        <comps>
+            <li Class="CompProperties_Drug">
+                <chemical>GeneSeed</chemical>
+                <addictiveness>0.00</addictiveness>
+                <needLevelOffset>1.00</needLevelOffset>
+                <listOrder>1011</listOrder>
+            </li>
+        </comps>
+        <tradeTags>
+            <li>ExoticMisc</li>
+        </tradeTags>
+    </ThingDef>
+
+    <HediffDef>
+        <defName>GeenSeedAdaption</defName>
+        <hediffClass>GeneSeed.GeneSeedHediffWithComps</hediffClass>
+        <label>GeneSeed Growth</label>
+        <defaultLabelColor>(1,0.5,0.5)</defaultLabelColor>
+        <scenarioCanAdd>false</scenarioCanAdd>
+        <maxSeverity>1.0</maxSeverity>
+        <isBad>false</isBad>
+        <comps>
+            <li Class="HediffCompProperties_HealPermanentWounds" />
+        </comps>
+        <stages>
+            <li>
+                <painFactor>0.6</painFactor>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <offset>0.40</offset>
+                    </li>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <offset>1.00</offset>
+                    </li>
+                    <li>
+                        <capacity>Sight</capacity>
+                        <offset>1.00</offset>
+                    </li>
+                    <li>
+                        <capacity>BloodFiltration</capacity>
+                        <offset>0.70</offset>
+                    </li>
+                    <li>
+                        <capacity>BloodPumping</capacity>
+                        <offset>0.45</offset>
+                    </li>
+                    <li>
+                        <capacity>Metabolism</capacity>
+                        <offset>0.80</offset>
+                    </li>
+                    <li>
+                        <capacity>Breathing</capacity>
+                        <offset>0.80</offset>
+                    </li>
+                </capMods>
+            </li>
+        </stages>
+    </HediffDef>
+    
+    <ChemicalDef>
+        <defName>GeneSeed</defName>
+        <label>GeneSeed</label>
+        <canBinge>false</canBinge>
+    </ChemicalDef>
+
+
+
+
+    <HediffDef>
+        <defName>GeneSeedMutated</defName>
+        <hediffClass>GeneSeed.GeneSeedMutationHediffWithComps</hediffClass>
+        <label>GeneSeed Alterations</label>
+        <defaultLabelColor>(0.5, 0.7, 0.45)</defaultLabelColor>
+        <makesSickThought>false</makesSickThought>
+        <initialSeverity>0.1</initialSeverity>
+        <maxSeverity>1</maxSeverity>
+        <scenarioCanAdd>true</scenarioCanAdd>
+        <tendable>false</tendable>
+        <addedPartProps>
+            <partEfficiency>1.5</partEfficiency>
+            <betterThanNatural>true</betterThanNatural>
+        </addedPartProps>
+        <comps>
+            <li Class="HediffCompProperties_SeverityPerDay">
+                <severityPerDay>-0.005</severityPerDay>
+            </li>
+        </comps>
+        <stages>
+            <li>
+                <label>Enhanced</label>
+                <hungerRateFactorOffset>0.2</hungerRateFactorOffset>
+                <painOffset>-0.025</painOffset>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <postFactor>1.001</postFactor>
+                    </li>
+                    <li>
+                        <capacity>Manipulation</capacity>
+                        <postFactor>1.001</postFactor>
+                    </li>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <postFactor>1.001</postFactor>
+                    </li>
+                </capMods>
+            </li>
+            <li>
+                <label>Beyond Enhanced</label>
+                <minSeverity>0.301</minSeverity>
+                
+                <socialFightChanceFactor>0</socialFightChanceFactor>
+                <hungerRateFactorOffset>-0.5</hungerRateFactorOffset>
+                <vomitMtbDays>50</vomitMtbDays>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <postFactor>1.002</postFactor>
+                    </li>
+                    <li>
+                        <capacity>Manipulation</capacity>
+                        <postFactor>1.002</postFactor>
+                    </li>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <postFactor>1.02</postFactor>
+                    </li>
+                </capMods>
+            </li>
+            <li>
+                <label>Mutated</label>
+                <minSeverity>0.601</minSeverity>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <postFactor>1.01</postFactor>
+                    </li>
+                    <li>
+                        <capacity>Manipulation</capacity>
+                        <postFactor>1.01</postFactor>
+                    </li>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <postFactor>1.03</postFactor>
+                    </li>
+
+                    <li>
+                        <capacity>Breathing</capacity>
+                        <offset>0.005</offset>
+                    </li>
+                </capMods>
+            </li>
+            <li>
+                <label>Hightly Mutated</label>
+                <minSeverity>0.951</minSeverity>
+                <capMods>
+                    <li>
+                        <capacity>Consciousness</capacity>
+                        <postFactor>1.05</postFactor>
+                    </li>
+                    <li>
+                        <capacity>Manipulation</capacity>
+                        <postFactor>1.05</postFactor>
+                    </li>
+                    <li>
+                        <capacity>Moving</capacity>
+                        <postFactor>1.05</postFactor>
+                    </li>
+                    <li>
+                        <capacity>Talking</capacity>
+                        <postFactor>1.05</postFactor>
+                    </li>
+                    <li>
+                        <capacity>Breathing</capacity>
+                        <offset>0.01</offset>
+                    </li>
+                </capMods>
+            </li>
+        </stages>
+    </HediffDef>
+</Defs>
