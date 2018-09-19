@@ -19,7 +19,7 @@ namespace GeneSeed
                         this.Severity = Math.Min(this.Severity * 2, 1f);
                     }
                 }
-            }
+            }    
         }
         
         

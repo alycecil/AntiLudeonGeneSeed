@@ -32,9 +32,13 @@ namespace GeneSeed
                 {
 
                     Thing var = ThingMaker.MakeThing(Constants.GeneSeed);
+                    
 
                     if (var != null ) //add a rarity roll here 10%
                     {
+                        //if astarte more.
+                        var.stackCount = corpse.InnerPawn.def == Constants.Astarte ? 20 : 1;
+                        
                         list.Add(var);
                     }
                     else

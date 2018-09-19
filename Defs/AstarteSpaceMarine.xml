@@ -152,6 +152,7 @@
             </hediffGiverSets>
         </race>
         <recipes>
+            <li>InstallAstartePart</li>
             <li>InstallArchotechEye</li>
             <li>InstallArchotechArm</li>
             <li>InstallArchotechLeg</li>

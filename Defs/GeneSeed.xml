@@ -4,10 +4,7 @@
     <ThingDef ParentName="DrugPillBase">
         <defName>GeneSeed</defName>
         <label>GeneSeed</label>
-        <description>
-            The GeneSeed opens the pathways to an ordinary human becoming far more modified than traditionally believe possible due to immune system requestions or shutdowns.
-        </description>
-        
+        <description>The GeneSeed opens the pathways to an ordinary human becoming far more modified than traditionally believe possible due to immune system rejections or shutdowns. This is the extract of an unique organ found in humanoids on rimworlds or much more plentiful in a proper Astarte. It will take 20 of these to make an Astarte with all 19 alterations.</description>
         <graphicData>
             <texPath>Things/Item/Drug/Luciferium</texPath>
             <graphicClass>Graphic_StackCount</graphicClass>
