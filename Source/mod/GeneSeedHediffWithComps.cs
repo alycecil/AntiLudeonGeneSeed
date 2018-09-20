@@ -79,7 +79,8 @@ namespace GeneSeed
 
         public override void PostAdd(DamageInfo? dinfo)
         {
-            TransformPawn();
+            if(pawn.RaceProps.Humanlike)
+                TransformPawn();
 
             base.PostAdd(dinfo);
         }
