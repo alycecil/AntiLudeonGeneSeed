@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using Harmony;
 using RimWorld;
 using Verse;
@@ -51,5 +52,24 @@ namespace GeneSeed
                 return;
             }
         }
+
+
+    [HarmonyPatch(typeof(WorkGiver_GatherAnimalBodyResources), "HasJobOnThing")]
+    public static class WorkGiver_GatherAnimalBodyResources_Transpiler_Patch
+    {
+        [HarmonyTranspiler]
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var codes = new List<CodeInstruction>(instructions);
+            
+            foreach (var code in codes)
+            {
+                if ("Boolean get_Animal()".Equals(code.operand?.ToString()))
+                    Log.Message("[GeneSeed:Transpiler] WorkGiver_GatherAnimalBodyResources works on all things with races instead of just animals.");
+                else
+                    yield return code;
+            }
+        }
+    }
     }
 }

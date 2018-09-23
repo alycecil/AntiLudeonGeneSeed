@@ -10,8 +10,7 @@ namespace GeneSeed.Organs
             var toxic = pawn.health.hediffSet.GetFirstHediffOfDef(HediffDefOf.ToxicBuildup);
             if (toxic != null)
             {
-                toxic.Severity /= 2f;
-
+                pawn.health.RemoveHediff(toxic);
             }
         }
     }

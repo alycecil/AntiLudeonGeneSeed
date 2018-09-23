@@ -1,6 +1,7 @@
 using System.Linq;
 using GeneSeed.Organs;
 using RimWorld;
+using RimWorld.Planet;
 using Verse;
 
 namespace GeneSeed
@@ -120,9 +121,13 @@ namespace GeneSeed
                     hediff.Tended(1f);
                 }
             }
-
+            
+            //decache graphics
+            pawn.Drawer.renderer.graphics.ResolveAllGraphics();
+            
             //save the pawn
             pawn.ExposeData();
+            
         }
 
         public override bool ShouldRemove => false;

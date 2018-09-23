@@ -33,10 +33,7 @@ namespace GeneSeed.Organs
         {
             if(pawn == null || part?.def==null) return;
 
-            if (part.def == Haemastamen)
-            {
-                BloodMaker.doHaemastamen(pawn, part);
-            }else if (part.def == LarramansOrgan)
+            if (part.def == LarramansOrgan || part.def == Haemastamen)
             {
                 ClotOrganHelper.doOrgan(pawn, part);
 
@@ -45,7 +42,7 @@ namespace GeneSeed.Organs
                 ToxicFilter.doClense(pawn, part);
             }else if (part.def == ProgenoidGlands)
             {
-                geneSeedAvailable.Severity += .0005f;
+                geneSeedAvailable.Severity += .0001f;
             }
         }
     }

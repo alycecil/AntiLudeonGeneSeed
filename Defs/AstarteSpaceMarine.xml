@@ -13,6 +13,13 @@
             <ComfyTemperatureMax>36</ComfyTemperatureMax>
             <LeatherAmount>100</LeatherAmount>
         </statBases>
+        <comps>
+            <li Class="CompProperties_Milkable">
+                <milkDef>GeneSeed</milkDef>
+                <milkIntervalDays>5</milkIntervalDays>
+                <milkAmount>1</milkAmount>
+            </li>
+        </comps>
         <tools>
             <li>
                 <label>left fist</label>

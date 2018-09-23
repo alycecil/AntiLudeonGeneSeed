@@ -62,7 +62,6 @@
     <Compile Include="mod\GeneSeed.cs" />
     <Compile Include="mod\GeneSeedHediffWithComps.cs" />
     <Compile Include="mod\GeneSeedMutationHediffWithComps.cs" />
-    <Compile Include="mod\Organs\BloodMaker.cs" />
     <Compile Include="mod\Organs\GeneSeedOrganHelper.cs" />
     <Compile Include="mod\Organs\ClotOrganHelper.cs" />
     <Compile Include="mod\Organs\ToxicFilter.cs" />
