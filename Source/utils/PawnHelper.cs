@@ -15,7 +15,7 @@ namespace GeneSeed
 
         public static void mutate(Pawn pawn)
         {
-            foreach (var bodyPartRecord in pawn.health.hediffSet.GetNotMissingParts().Where(x => Rand.Value < 0.1f))
+            foreach (var bodyPartRecord in pawn.health.hediffSet.GetNotMissingParts().Where(x => Rand.Value < 0.1f && !Constants.AstarteBodyParts.Contains(x.def)))
             {
                 var diff = GetHediff(pawn, Constants.Mutated, bodyPartRecord);
                 if (diff == null)

@@ -97,7 +97,7 @@
             <leatherDef>Leather_Human</leatherDef>
             <nameCategory>HumanStandard</nameCategory>
             <body>AstarteSpaceMarine</body>
-            <baseBodySize>1.5</baseBodySize>
+            <baseBodySize>3</baseBodySize>
             <baseHealthScale>10</baseHealthScale>
             <foodType>OmnivoreHuman</foodType>
             <gestationPeriodDays>35</gestationPeriodDays>
@@ -143,14 +143,14 @@
             </specialShadowData>
             <ageGenerationCurve>
                 <points>
-                    <li>(14,0)</li>
-                    <li>(16,100)</li>
-                    <li>(50,100)</li>
+                    <li>(8,0)</li>
+                    <li>(10,100)</li>
+                    <li>(40,100)</li>
                     <li>(60,30)</li>
                     <li>(70,18)</li>
                     <li>(80,10)</li>
-                    <li>(90,3)</li>
-                    <li>(100,0)</li>
+                    <li>(900,3)</li>
+                    <li>(5000,0)</li>
                 </points>
             </ageGenerationCurve>
             <hediffGiverSets>
@@ -186,7 +186,6 @@
             <li>InstallNaturalLiver</li>
             <li>ExciseCarcinoma</li>
             <li>AdministerMechSerumHealer</li>
-            <li>RemoveBodyPart</li>
             <li>Euthanize</li>
             <li>Anesthetize</li>
         </recipes>

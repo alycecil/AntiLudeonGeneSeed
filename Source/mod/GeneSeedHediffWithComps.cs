@@ -110,10 +110,13 @@ namespace GeneSeed
                 DamageDef surgicalCut = DamageDefOf.SurgicalCut;
                 float amount = 99999f;
                 float armorPenetration = 999f;
+               
                 foreach (var part in pawn.def.race.body.GetPartsWithDef(astarteBodyPart))
                 {
                     pawn.TakeDamage(new DamageInfo(surgicalCut, amount, armorPenetration, -1f, null, part, null,
                         DamageInfo.SourceCategory.ThingOrUnknown, null));
+
+                    //Log.Message("Blowing Off a Part : " + pawn + "'s "+part);
                 }
 
                 foreach (var hediff in pawn.health.hediffSet.GetHediffsTendable())

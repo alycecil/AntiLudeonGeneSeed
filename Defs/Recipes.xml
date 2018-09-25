@@ -4,7 +4,7 @@
         <defName>InstallAstartePart</defName>
         <label>Continue Astarte GeneSeed Transformation</label>
         <description>GeneSeed Organ implantation.</description>
-        <workerClass>Recipe_InstallNaturalBodyPart</workerClass>
+        <workerClass>GeneSeed.GeneSeedRecipe_InstallNaturalBodyPart</workerClass>
         <jobString>implantation of Gene Seed organ.</jobString>
         <workAmount>2500</workAmount>
         <skillRequirements>

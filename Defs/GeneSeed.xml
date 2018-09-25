@@ -221,11 +221,10 @@
         <makesSickThought>false</makesSickThought>
         <initialSeverity>0.1</initialSeverity>
         <maxSeverity>1</maxSeverity>
-        <scenarioCanAdd>true</scenarioCanAdd>
         <tendable>false</tendable>
+        <isBad>false</isBad>
         <addedPartProps>
             <partEfficiency>2</partEfficiency>
-            <betterThanNatural>true</betterThanNatural>
         </addedPartProps>
         <comps>
             <li Class="HediffCompProperties_SeverityPerDay">
