@@ -81,6 +81,9 @@
                         <offset>0.5</offset>
                     </li>
                 </capMods>
+                <statOffsets>
+                    <CarryingCapacity>10</CarryingCapacity>
+                </statOffsets>
             </li>
             <li>
                 <label>Astartes</label>
@@ -113,6 +116,9 @@
                         <offset>0.6</offset>
                     </li>
                 </capMods>
+                <statOffsets>
+                    <CarryingCapacity>80</CarryingCapacity>
+                </statOffsets>
             </li>
             <li>
                 <label>Praetorate</label>
@@ -153,6 +159,9 @@
                         <offset>1.00</offset>
                     </li>
                 </capMods>
+                <statOffsets>
+                    <CarryingCapacity>150</CarryingCapacity>
+                </statOffsets>
             </li>
             <li>
                 <label>Primarch</label>
@@ -200,6 +209,9 @@
                         <offset>1.20</offset>
                     </li>
                 </capMods>
+                <statOffsets>
+                    <CarryingCapacity>400</CarryingCapacity>
+                </statOffsets>
             </li>
         </stages>
     </HediffDef>
