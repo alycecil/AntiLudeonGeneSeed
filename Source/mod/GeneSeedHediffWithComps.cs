@@ -9,6 +9,9 @@ namespace GeneSeed
     public class GeneSeedHediffWithComps : HediffWithComps
     {
         private int ticks = 0;
+
+        private IntVec3 where;
+        
         public override void Tick()
         {
             ticks++;
@@ -80,7 +83,7 @@ namespace GeneSeed
 
         public override void PostAdd(DamageInfo? dinfo)
         {
-            if(pawn.RaceProps.Humanlike)
+            if(pawn.RaceProps.Humanlike && pawn.def != Constants.Astarte)
                 TransformPawn();
 
             base.PostAdd(dinfo);
@@ -91,15 +94,31 @@ namespace GeneSeed
 //Body change to Astarte
 
             //only gaining parts
-
+            
+            
             var map = pawn.Map;
+            var where = pawn.Position;
+
+            if (where == IntVec3.Zero || where == IntVec3.Invalid)
+            {
+                where = map.Center;
+            }
+            pawn.DeSpawn();
             RegionListersUpdater.DeregisterInRegions(pawn, map);
+            
+            pawn.Position = where;
+            
+            
             if (Constants.Astarte != null)
             {
                 pawn.def = Constants.Astarte;
             }
 
+
+            pawn.SpawnSetup(map, true);
+            
             RegionListersUpdater.RegisterInRegions(pawn, map);
+            
 
             map.mapPawns.UpdateRegistryForPawn(pawn);
 
@@ -130,7 +149,9 @@ namespace GeneSeed
             
             //save the pawn
             pawn.ExposeData();
-            
+
+            pawn.Position = where;
+
         }
 
         public override bool ShouldRemove => false;
