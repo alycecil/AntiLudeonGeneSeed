@@ -83,7 +83,7 @@ namespace GeneSeed
 
         public override void PostAdd(DamageInfo? dinfo)
         {
-            if(pawn.RaceProps.Humanlike && pawn.def != Constants.Astarte)
+            if(pawn.RaceProps.Humanlike && pawn.def == ThingDefOf.Human)
                 TransformPawn();
 
             base.PostAdd(dinfo);
@@ -97,12 +97,7 @@ namespace GeneSeed
             
             
             var map = pawn.Map;
-            var where = pawn.Position;
-
-            if (where == IntVec3.Zero || where == IntVec3.Invalid)
-            {
-                where = map.Center;
-            }
+            pawn.DestroyOrPassToWorld();
             pawn.DeSpawn();
             RegionListersUpdater.DeregisterInRegions(pawn, map);
             
@@ -150,7 +145,7 @@ namespace GeneSeed
             //save the pawn
             pawn.ExposeData();
 
-            pawn.Position = where;
+            pawn.Position = map.Center;
 
         }
 
