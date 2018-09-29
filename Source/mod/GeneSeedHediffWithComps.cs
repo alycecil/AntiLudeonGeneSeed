@@ -132,6 +132,7 @@ namespace GeneSeed
                         DamageInfo.SourceCategory.ThingOrUnknown, null));
 
                     //Log.Message("Blowing Off a Part : " + pawn + "'s "+part);
+                    break;
                 }
 
                 foreach (var hediff in pawn.health.hediffSet.GetHediffsTendable())
@@ -151,14 +152,12 @@ namespace GeneSeed
                 if (bodyPartRecords.Count() <= 1) continue;
                 ohHellNahWeAMutant = true;
                 Log.Message(
-                    "Uh Oh this Astarte is a damn mutant, they got more than one copy of the astarte organs. Gotta fix our organs, something is helping our bodies too much.");
+                    "Uh Oh this Astarte is a damn mutant, they got more than one copy of the astarte organs ["+bodyPartRecords.First()+"]");
                 FilthMaker.MakeFilth(pawn.Position, pawn.Map, ThingDefOf.Filth_Blood, 6);
                 break;
             }
 
             if (!ohHellNahWeAMutant) return;
-            DeDuper.DuplicatesByType(pawn.def);
-            DeDuper.DuplicatesByLabel(pawn.def);
         }
 
 
