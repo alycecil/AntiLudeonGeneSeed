@@ -13,18 +13,16 @@ namespace GeneSeed
         {
             foreach (var recipePart in recipe.appliedOnFixedBodyParts)
             {
-                IEnumerable<BodyPartRecord> missingParts = pawn.RaceProps.body.AllParts.Where(x=>pawn.health.hediffSet.PartIsMissing(x));
+                IEnumerable<BodyPartRecord> missingParts = pawn.RaceProps.body.AllParts.Where(x=>pawn.health.hediffSet.PartIsMissing(x) && x.body == Constants.Astarte.race.body);
                 foreach (var record in missingParts)
                 {
                     if (record.def == recipePart)
                     {
-                        
                         yield return record;
+                        break;
                     }
                 }
             }
-
-            yield break;
         }
     }
 }
