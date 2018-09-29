@@ -55,6 +55,9 @@ namespace GeneSeed.Organs
             }else if (part.def == TheBlackCarapace)
             {
                 Organs.TheBlackCarapace.EnhanceArmor(pawn, part, geneSeedAvailable);
+            }else if (part.def == Biscopea || part.def == Ossmodula)
+            {
+                
             }
         }
     }

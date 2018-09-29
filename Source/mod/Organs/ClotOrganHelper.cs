@@ -3,13 +3,17 @@ using Verse;
 
 namespace GeneSeed.Organs
 {
-    public class ClotOrganHelper
+    public static class ClotOrganHelper
     {
         public static void doOrgan(Pawn pawn, BodyPartRecord part)
         {
+            var i = 5;
             foreach (var hediff in pawn.health.hediffSet.hediffs.Where(x=> x.Bleeding).OrderByDescending(x=>x.BleedRate))
             {
                 hediff.Tended(Rand.Value);
+                i--;
+
+                if (i <= 0) return;
             }
         }
     }

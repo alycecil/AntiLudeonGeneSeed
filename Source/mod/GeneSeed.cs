@@ -14,7 +14,6 @@ namespace GeneSeed
     {
         public GeneSeed(ModContentPack content) : base(content)
         {
-//            HarmonyInstance.DEBUG = true;
             var harmony = HarmonyInstance.Create("acecil.rimworld.geneseeds");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
@@ -35,7 +34,7 @@ namespace GeneSeed
                     Thing var = ThingMaker.MakeThing(Constants.GeneSeed);
                     
 
-                    if (var != null ) //add a rarity roll here 10%
+                    if (var != null )
                     {
                         //if astarte more.
                         var.stackCount = corpse.InnerPawn.def == Constants.Astarte ? 20 : 1;
