@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Harmony;
+using RimWorld;
 using Verse;
 
 namespace GeneSeed
@@ -11,7 +12,12 @@ namespace GeneSeed
         {
             return pawn.RaceProps.Humanlike; //||pawn.kindDef.race == ThingDefOf.Human
         }
-
+        
+        
+        public static bool is_bloodlust(Pawn pawn)
+        {
+            return (pawn?.story?.traits != null && pawn.story.traits.HasTrait(TraitDefOf.Bloodlust));
+        }
 
         public static void mutate(Pawn pawn)
         {
@@ -42,6 +48,19 @@ namespace GeneSeed
             }
 
             return null;
+        }
+
+        public static void ClenseBad(Pawn pawn, HediffDef hediffDef)
+        {
+            var toxic = pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef);
+            if (toxic != null)
+            {
+                pawn.health.RemoveHediff(toxic);
+                int outCount = (int) (toxic.Severity * 10);
+                //ew, that was a ot of ew, gotta poop. THAT'S LORE BABY.
+                if (outCount > 0)
+                    FilthMaker.MakeFilth(pawn.Position, pawn.Map, ThingDefOf.Filth_Slime, outCount);
+            }
         }
     }
 }

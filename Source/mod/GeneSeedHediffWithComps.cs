@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 using System.Linq;
 using GeneSeed.Organs;
 using RimWorld;
-using RimWorld.Planet;
 using Verse;
 
 namespace GeneSeed
@@ -10,54 +10,47 @@ namespace GeneSeed
     {
         private int ticks = 0;
 
-        private IntVec3 where;
-        
         public override void Tick()
         {
             ticks++;
-            
+
             OrganFunctions();
-            
+
             GeneSeedMutation();
 
             RestoreOrgan();
 
-            ticks %= 20000000;
+            ticks %= 3010349; //my favorite prime
         }
 
         private void OrganFunctions()
         {
-            if (ticks%250==0)
-            {
-                foreach (BodyPartDef astarteBodyPart in Constants.AstarteBodyParts)
-                {
-                    foreach (var part in pawn.def.race.body.GetPartsWithDef(astarteBodyPart))
-                    {
-                        if (part == null || pawn.health.hediffSet.PartIsMissing(part)) continue;
+            if (ticks % 250 != 0) return;
 
-                        GeneSeedOrganHelper.apply(pawn, part, this);
-                        
-                        break;
-                    }
+            foreach (BodyPartDef astarteBodyPart in Constants.AstarteBodyParts)
+            {
+                foreach (var part in pawn.def.race.body.GetPartsWithDef(astarteBodyPart))
+                {
+                    if (part == null || pawn.health.hediffSet.PartIsMissing(part)) continue;
+
+                    GeneSeedOrganHelper.apply(pawn, part, this);
+
+                    break;
                 }
             }
         }
 
         private void GeneSeedMutation()
         {
-            if (ticks%1000==0) //20x daily
-            {
-                if (Rand.MTBEventOccurs(0.5f, 60000f, 1000f)) //if is rare occurance
-                {
-                    //Mutate
-                    PawnHelper.mutate(pawn);
-                }
-            }
+            if (ticks % 1000 != 0) return;
+            if (!Rand.MTBEventOccurs(0.5f, 60000f, 1000f)) return;
+            //Mutate
+            PawnHelper.mutate(pawn);
         }
 
         private void RestoreOrgan()
         {
-            if (ticks%1000!=0 || this.Severity < .11f) return;
+            if (ticks % 1000 != 0 || this.Severity < .11f) return;
             //time for a bonus organ
 
             bool didOne = false;
@@ -75,15 +68,14 @@ namespace GeneSeed
                 }
             }
 
-            if (didOne)
-            {
-                this.Severity *= 0.666f;
-            }
+            if (!didOne) return;
+            checkAllThatInsidesForGunk();
+            this.Severity -= 0.1f;
         }
 
         public override void PostAdd(DamageInfo? dinfo)
         {
-            if(pawn.RaceProps.Humanlike && pawn.def == ThingDefOf.Human)
+            if (pawn.RaceProps.Humanlike && pawn.def == ThingDefOf.Human)
                 TransformPawn();
 
             base.PostAdd(dinfo);
@@ -91,19 +83,15 @@ namespace GeneSeed
 
         private void TransformPawn()
         {
-//Body change to Astarte
+            //Body change to Astarte
+            var where = pawn.Position;
 
-            //only gaining parts
-            
-            
             var map = pawn.Map;
             pawn.DestroyOrPassToWorld();
             pawn.DeSpawn();
             RegionListersUpdater.DeregisterInRegions(pawn, map);
-            
-            pawn.Position = where;
-            
-            
+
+
             if (Constants.Astarte != null)
             {
                 pawn.def = Constants.Astarte;
@@ -111,20 +99,33 @@ namespace GeneSeed
 
 
             pawn.SpawnSetup(map, true);
-            
+
             RegionListersUpdater.RegisterInRegions(pawn, map);
-            
+
 
             map.mapPawns.UpdateRegistryForPawn(pawn);
 
             //remove the 19
 
+            RemoveAstarteParts();
+
+            //decache graphics
+            pawn.Drawer.renderer.graphics.ResolveAllGraphics();
+
+            //save the pawn
+            pawn.ExposeData();
+
+            pawn.Position = map.Center;
+        }
+
+        private void RemoveAstarteParts()
+        {
             foreach (BodyPartDef astarteBodyPart in Constants.AstarteBodyParts)
             {
                 DamageDef surgicalCut = DamageDefOf.SurgicalCut;
                 float amount = 99999f;
                 float armorPenetration = 999f;
-               
+
                 foreach (var part in pawn.def.race.body.GetPartsWithDef(astarteBodyPart))
                 {
                     pawn.TakeDamage(new DamageInfo(surgicalCut, amount, armorPenetration, -1f, null, part, null,
@@ -138,16 +139,28 @@ namespace GeneSeed
                     hediff.Tended(1f);
                 }
             }
-            
-            //decache graphics
-            pawn.Drawer.renderer.graphics.ResolveAllGraphics();
-            
-            //save the pawn
-            pawn.ExposeData();
-
-            pawn.Position = map.Center;
-
         }
+
+
+        private void checkAllThatInsidesForGunk()
+        {
+            bool ohHellNahWeAMutant = false;
+            foreach (BodyPartDef astarteBodyPart in Constants.AstarteBodyParts)
+            {
+                IEnumerable<BodyPartRecord> bodyPartRecords = pawn.def.race.body.GetPartsWithDef(astarteBodyPart);
+                if (bodyPartRecords.Count() <= 1) continue;
+                ohHellNahWeAMutant = true;
+                Log.Message(
+                    "Uh Oh this Astarte is a damn mutant, they got more than one copy of the astarte organs. Gotta fix our organs, something is helping our bodies too much.");
+                FilthMaker.MakeFilth(pawn.Position, pawn.Map, ThingDefOf.Filth_Blood, 6);
+                break;
+            }
+
+            if (!ohHellNahWeAMutant) return;
+            DeDuper.DuplicatesByType(pawn.def);
+            DeDuper.DuplicatesByLabel(pawn.def);
+        }
+
 
         public override bool ShouldRemove => false;
     }

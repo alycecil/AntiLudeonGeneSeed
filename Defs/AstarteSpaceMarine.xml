@@ -99,7 +99,7 @@
             <body>AstarteSpaceMarine</body>
             <baseBodySize>3</baseBodySize>
             <baseHealthScale>10</baseHealthScale>
-            <foodType>OmnivoreHuman</foodType>
+            <foodType>OmnivoreRoughAnimal</foodType>
             <gestationPeriodDays>35</gestationPeriodDays>
             <meatMarketValue>0.8</meatMarketValue>
             <manhunterOnDamageChance>0.20</manhunterOnDamageChance>

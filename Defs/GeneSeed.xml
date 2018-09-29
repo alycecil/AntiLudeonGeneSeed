@@ -3,8 +3,15 @@
 
     <ThingDef ParentName="DrugPillBase">
         <defName>GeneSeed</defName>
-        <label>GeneSeed</label>
-        <description>The GeneSeed opens the pathways to an ordinary human becoming far more modified than traditionally believe possible due to immune system rejections or shutdowns. This is the extract of an unique organ found in humanoids on rimworlds or much more plentiful in a proper Astarte. It will take 20 of these to make an Astarte with all 19 alterations.</description>
+        <label>Gene Seed</label>
+        <description>The GeneSeed opens the pathways to an ordinary human becoming far more modified than traditionally believe possible due to immune system rejections or some other malady causing death. 
+            This is the extract of an unique organ found in humanoids on rimworlds or much more plentiful in a proper Adaptus Astarte. 
+            
+            It will take 20 of these to make an Astarte with all 19 alterations, the recommended way to transform an transform into a child of war is to take one a day for 20 days. Continue consumption beyond that point will only contribute so much. 
+            Forced early implantation is offered with decent medical knowledge and directly applying.
+            
+            This seed's lines roots leave questions widely unanswered as it effects all human stock pushing them to new heights.
+            Threateningly heretical writings suggest it may work on Xenos to varying degree.</description>
         <graphicData>
             <texPath>Things/Item/Drug/Luciferium</texPath>
             <graphicClass>Graphic_StackCount</graphicClass>
@@ -245,60 +252,10 @@
         </comps>
         <stages>
             <li>
+                <becomeVisible>false</becomeVisible>
                 <label>Neophyte</label>
-                <painOffset>-0.025</painOffset>
+                <painOffset>-0.015</painOffset>
                 <capMods>
-                    <li>
-                        <capacity>Consciousness</capacity>
-                        <postFactor>1.001</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Manipulation</capacity>
-                        <postFactor>1.001</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Moving</capacity>
-                        <postFactor>1.001</postFactor>
-                    </li>
-                </capMods>
-            </li>
-            <li>
-                <label>Astartes</label>
-                <minSeverity>0.301</minSeverity>
-                <socialFightChanceFactor>0</socialFightChanceFactor>
-                <capMods>
-                    <li>
-                        <capacity>Consciousness</capacity>
-                        <postFactor>1.002</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Manipulation</capacity>
-                        <postFactor>1.002</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Moving</capacity>
-                        <postFactor>1.02</postFactor>
-                    </li>
-                </capMods>
-            </li>
-            <li>
-                <label>Praetorate</label>
-                <minSeverity>0.601</minSeverity>
-                <socialFightChanceFactor>0</socialFightChanceFactor>
-                <capMods>
-                    <li>
-                        <capacity>Consciousness</capacity>
-                        <postFactor>1.01</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Manipulation</capacity>
-                        <postFactor>1.01</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Moving</capacity>
-                        <postFactor>1.03</postFactor>
-                    </li>
-
                     <li>
                         <capacity>Breathing</capacity>
                         <offset>0.005</offset>
@@ -306,28 +263,38 @@
                 </capMods>
             </li>
             <li>
-                <label>Primarch</label>
-                <minSeverity>0.951</minSeverity>
+                <becomeVisible>false</becomeVisible>
+                <label>Astartes</label>
+                <minSeverity>0.301</minSeverity>
+                <painOffset>-0.025</painOffset>
                 <capMods>
-                    <li>
-                        <capacity>Consciousness</capacity>
-                        <postFactor>1.05</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Manipulation</capacity>
-                        <postFactor>1.05</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Moving</capacity>
-                        <postFactor>1.05</postFactor>
-                    </li>
-                    <li>
-                        <capacity>Talking</capacity>
-                        <postFactor>1.05</postFactor>
-                    </li>
                     <li>
                         <capacity>Breathing</capacity>
                         <offset>0.01</offset>
+                    </li>
+                </capMods>
+            </li>
+            <li>
+                <becomeVisible>false</becomeVisible>
+                <label>Praetorate</label>
+                <minSeverity>0.601</minSeverity>
+                <painOffset>-0.09</painOffset>
+                <capMods>
+                    <li>
+                        <capacity>Breathing</capacity>
+                        <offset>0.015</offset>
+                    </li>
+                </capMods>
+            </li>
+            <li>
+                <becomeVisible>false</becomeVisible>
+                <label>Primarch</label>
+                <minSeverity>0.951</minSeverity>
+                <painOffset>-0.1</painOffset>
+                <capMods>
+                    <li>
+                        <capacity>Breathing</capacity>
+                        <offset>0.02</offset>
                     </li>
                 </capMods>
             </li>

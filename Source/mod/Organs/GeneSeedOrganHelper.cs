@@ -11,38 +11,50 @@ namespace GeneSeed.Organs
         public static BodyPartDef Biscopea = DefDatabase<BodyPartDef>.GetNamed("Biscopea");
         public static BodyPartDef Haemastamen = DefDatabase<BodyPartDef>.GetNamed("Haemastamen");
         public static BodyPartDef LarramansOrgan = DefDatabase<BodyPartDef>.GetNamed("LarramansOrgan");
-            
+
         public static BodyPartDef CatalepseanNode = DefDatabase<BodyPartDef>.GetNamed("CatalepseanNode");
         public static BodyPartDef Preomnor = DefDatabase<BodyPartDef>.GetNamed("Preomnor");
         public static BodyPartDef Omophagea = DefDatabase<BodyPartDef>.GetNamed("Omophagea");
         public static BodyPartDef MultiLung = DefDatabase<BodyPartDef>.GetNamed("MultiLung");
         public static BodyPartDef Occulobe = DefDatabase<BodyPartDef>.GetNamed("Occulobe");
-            
+
         public static BodyPartDef LymansEar = DefDatabase<BodyPartDef>.GetNamed("LymansEar");
         public static BodyPartDef SusanMembrane = DefDatabase<BodyPartDef>.GetNamed("SusanMembrane");
         public static BodyPartDef Melanochrome = DefDatabase<BodyPartDef>.GetNamed("Melanochrome");
         public static BodyPartDef OoliticKidney = DefDatabase<BodyPartDef>.GetNamed("OoliticKidney");
         public static BodyPartDef Neuroglottis = DefDatabase<BodyPartDef>.GetNamed("Neuroglottis");
-            
+
         public static BodyPartDef Mucranoid = DefDatabase<BodyPartDef>.GetNamed("Mucranoid");
         public static BodyPartDef BetchersGland = DefDatabase<BodyPartDef>.GetNamed("BetchersGland");
         public static BodyPartDef ProgenoidGlands = DefDatabase<BodyPartDef>.GetNamed("ProgenoidGlands");
         public static BodyPartDef TheBlackCarapace = DefDatabase<BodyPartDef>.GetNamed("TheBlackCarapace");
-               
+
         public static void apply(Pawn pawn, BodyPartRecord part, GeneSeedHediffWithComps geneSeedAvailable)
         {
-            if(pawn == null || part?.def==null) return;
+            if (pawn == null || part?.def == null) return;
 
             if (part.def == LarramansOrgan || part.def == Haemastamen)
             {
                 ClotOrganHelper.doOrgan(pawn, part);
-
-            }else if (part.def == Preomnor || part.def == OoliticKidney)
+            }
+            else if (part.def == OoliticKidney)
             {
                 ToxicFilter.doClense(pawn, part);
-            }else if (part.def == ProgenoidGlands)
+            }
+            else if (part.def == ProgenoidGlands)
             {
                 geneSeedAvailable.Severity += .0001f;
+            }
+            else if (part.def == Preomnor)
+            {
+                BestTummyEver.doClense(pawn, part);
+            }
+            else if (part.def == CatalepseanNode)
+            {
+                CatalepseanNodeSleepLessStessless.wakeUpCryBaby(pawn, part, geneSeedAvailable);
+            }else if (part.def == TheBlackCarapace)
+            {
+                Organs.TheBlackCarapace.EnhanceArmor(pawn, part, geneSeedAvailable);
             }
         }
     }

@@ -3,11 +3,12 @@ using Verse;
 
 namespace GeneSeed.Organs
 {
-    public class ToxicFilter
+    //Preomnor
+    public class BestTummyEver
     {
         public static void doClense(Pawn pawn, BodyPartRecord part)
         {
-            PawnHelper.ClenseBad(pawn, HediffDefOf.ToxicBuildup);
+           PawnHelper.ClenseBad(pawn, HediffDefOf.FoodPoisoning);
         }
     }
 }

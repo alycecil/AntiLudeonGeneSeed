@@ -59,12 +59,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="mod\DuplicatedBull\DeDuper.cs" />
     <Compile Include="mod\GeneSeed.cs" />
     <Compile Include="mod\GeneSeedHediffWithComps.cs" />
     <Compile Include="mod\GeneSeedMutationHediffWithComps.cs" />
     <Compile Include="mod\GeneSeedRecipe_InstallNaturalBodyPart.cs" />
+    <Compile Include="mod\Organs\BestTummyEver.cs" />
+    <Compile Include="mod\Organs\CatalepseanNodeSleepLessStessless.cs" />
     <Compile Include="mod\Organs\GeneSeedOrganHelper.cs" />
     <Compile Include="mod\Organs\ClotOrganHelper.cs" />
+    <Compile Include="mod\Organs\Melanochrome.cs" />
+    <Compile Include="mod\Organs\OmophageaCanibalismIsGood.cs" />
+    <Compile Include="mod\Organs\OssmodulaBiscopeaHulking.cs" />
+    <Compile Include="mod\Organs\ProgenoidGlands.cs" />
+    <Compile Include="mod\Organs\TheBlackCarapace.cs" />
     <Compile Include="mod\Organs\ToxicFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utils\Constants.cs" />

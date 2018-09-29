@@ -19,14 +19,11 @@
 
 		----
 		Unique Organ Functions while under the effects of Gene Seed.
-		- *Haemastamen* - Rapidly increased blood production
+		- *Haemastamen* - ~Rapidly increased blood production~ Clots injuries for now.
 		- *LarramansOrgan* - Clots injuries periodically
-		- *Preomnor* and *OoliticKidney* - Rapidly reduce toxins from the body
+		- *Preomnor* - Removes food poisoning and just poisoning as a general
+		- *OoliticKidney* - Rapidly reduce toxins from the body, you poop them out. It's lore.
 		- *ProgenoidGlands* - Slowly produce GeneSeed within the Astarte's body increasing their combat abilities as time passes.
-		
-		Will be adding disease clensing by OoliticKidney and Food Poisoning by the Preomnor
-		
-		Todo enable rough food consumption with BetchersGland
 		
 		Todo make the Black Carapace increase armor levels to Masterful version of whatever is on or a flat bonus.
 		
@@ -46,6 +43,7 @@
 		----
 		
 		This mod Powered by harmony and has no other dependencies. 
-			- Mod with Harmony not Hugs, because this is WarHammer 40k and its a rough place where I dont think the power armour is designed to allow you to hug. Full Nelson While Flaying your Neophyte's for the Black Carapace sure. Hugs, no.</description>
+			- Mod with Harmony not Hugs, because this is WarHammer 40k and its a rough place where I dont think the power armour is designed to allow you to hug. Full Nelson While Flaying your Neophyte's for the Black Carapace sure. Hugs, no.
+	</description>
 	<url>https://steamcommunity.com/id/AliceTries/myworkshopfiles/?appid=294100</url>
 </ModMetaData>

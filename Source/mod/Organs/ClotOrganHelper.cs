@@ -10,7 +10,6 @@ namespace GeneSeed.Organs
             foreach (var hediff in pawn.health.hediffSet.hediffs.Where(x=> x.Bleeding).OrderByDescending(x=>x.BleedRate))
             {
                 hediff.Tended(Rand.Value);
-                return;
             }
         }
     }
