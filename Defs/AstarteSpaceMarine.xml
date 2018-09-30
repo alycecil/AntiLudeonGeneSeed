@@ -16,7 +16,7 @@
         <comps>
             <li Class="CompProperties_Milkable">
                 <milkDef>GeneSeed</milkDef>
-                <milkIntervalDays>5</milkIntervalDays>
+                <milkIntervalDays>2</milkIntervalDays>
                 <milkAmount>1</milkAmount>
             </li>
         </comps>
