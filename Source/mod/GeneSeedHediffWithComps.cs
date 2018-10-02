@@ -23,6 +23,8 @@ namespace GeneSeed
 
             DealWithMissingParts();
             ticks %= 3010349; //my favorite prime
+            
+            base.Tick();
         }
 
         private void DealWithMissingParts()
@@ -74,7 +76,7 @@ namespace GeneSeed
             }
         }
 
-        private void GeneSeedMutation()
+        protected virtual void GeneSeedMutation()
         {
             if (ticks % 1000 != 0) return;
             if (!Rand.MTBEventOccurs(0.5f, 60000f, 1000f)) return;
@@ -102,8 +104,9 @@ namespace GeneSeed
 
             if (!didOne) return;
             checkAllThatInsidesForGunk();
-            this.Severity -= 0.1f;
+            this.Severity -= 0.05f;
         }
+        
         public override void PostAdd(DamageInfo? dinfo)
         {
             if (pawn.RaceProps.Humanlike && (pawn.def == ThingDefOf.Human || ThingDefOf.Human.race.body.defName == pawn.def.race.body.defName))
@@ -137,7 +140,7 @@ namespace GeneSeed
 
             //remove the 19
 
-            if (!keep) RemoveAstarteParts();
+            if (!BlowOffParts(keep)) RemoveAstarteParts();
 
             //decache graphics
             pawn.Drawer.renderer.graphics.ResolveAllGraphics();
@@ -146,6 +149,11 @@ namespace GeneSeed
             pawn.ExposeData();
 
             pawn.Position = map.Center;
+        }
+
+        protected virtual bool BlowOffParts(bool keep)
+        {
+            return keep;
         }
 
         private void RemoveAstarteParts()
@@ -178,7 +186,7 @@ namespace GeneSeed
             bool ohHellNahWeAMutant = false;
             foreach (BodyPartDef astarteBodyPart in Constants.AstarteBodyParts)
             {
-                IEnumerable<BodyPartRecord> bodyPartRecords = pawn.def.race.body.GetPartsWithDef(astarteBodyPart);
+                IEnumerable<BodyPartRecord> bodyPartRecords = pawn.def.race.body.GetPartsWithDef(astarteBodyPart).ToList();
                 if (bodyPartRecords.Count() <= 1) continue;
                 ohHellNahWeAMutant = true;
                 Log.Message(

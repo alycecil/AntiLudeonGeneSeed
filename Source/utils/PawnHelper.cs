@@ -23,28 +23,35 @@ namespace GeneSeed
         {
             foreach (var bodyPartRecord in pawn.health.hediffSet.GetNotMissingParts().Where(x => Rand.Value < 0.1f && !Constants.AstarteBodyParts.Contains(x.def)))
             {
-                var diff = GetHediff(pawn, Constants.Mutated, bodyPartRecord);
-                if (diff == null)
-                {
-                    diff = pawn.health.AddHediff(Constants.Mutated, bodyPartRecord);
-                    diff.Severity = Rand.Value;
-                }
-                else
-                {
-                    diff.Severity = Math.Min(diff.Severity + Rand.Value, 1f);
-                }
+                MutatePart(pawn, bodyPartRecord);
             }
+        }
+
+        public static Hediff MutatePart(Pawn pawn, BodyPartRecord bodyPartRecord)
+        {
+            Hediff diff = GetHediff(pawn, Constants.Mutated, bodyPartRecord);
+            if (diff == null)
+            {
+                diff = pawn.health.AddHediff(Constants.Mutated, bodyPartRecord);
+                diff.Severity = Rand.Value;
+            }
+            else
+            {
+                diff.Severity = Math.Min(diff.Severity + Rand.Value, 1f);
+            }
+
+            return diff;
         }
 
 
         public static Hediff GetHediff(Pawn pawn, HediffDef def, BodyPartRecord bodyPart, bool mustBeVisible = false)
         {
-            var hediffs = pawn.health.hediffSet.hediffs;
-            for (int index = 0; index < hediffs.Count; ++index)
+            var heDiffs = pawn.health.hediffSet.hediffs;
+            foreach (var t in heDiffs)
             {
-                if (hediffs[index].def == def && hediffs[index].Part == bodyPart &&
-                    (!mustBeVisible || hediffs[index].Visible))
-                    return hediffs[index];
+                if (t.def == def && t.Part == bodyPart &&
+                    (!mustBeVisible || t.Visible))
+                    return t;
             }
 
             return null;

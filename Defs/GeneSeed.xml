@@ -46,7 +46,52 @@
         </tradeTags>
     </ThingDef>
 
-    <HediffDef>
+    <ThingDef ParentName="DrugPillBase">
+        <defName>GeneSeedCustodes</defName>
+        <label>Gene Seed (Custodes)</label>
+        <description>The GeneSeed opens the pathways to an ordinary human becoming far more modified than traditionally believe possible due to immune system rejections or some other malady causing death.
+            This is the extract of an unique organ found in humanoids on rimworlds or much more plentiful in a proper Adaptus Astarte.
+
+            It will take 20 of these to make an Astarte with all 19 alterations, the recommended way to transform an transform into a child of war is to take one a day for 20 days. Continue consumption beyond that point will only contribute so much.
+            Forced early implantation is offered with decent medical knowledge and directly applying.
+
+            This seed's lines roots leave questions widely unanswered as it effects all human stock pushing them to new heights.
+            Threateningly heretical writings suggest it may work on Xenos to varying degree.</description>
+        <graphicData>
+            <texPath>Things/Item/Drug/Luciferium</texPath>
+            <graphicClass>Graphic_StackCount</graphicClass>
+            <color>(0,230,0)</color>
+        </graphicData>
+        <rotatable>false</rotatable>
+        <statBases>
+            <MarketValue>200</MarketValue>
+            <Mass>0.001</Mass>
+        </statBases>
+        <techLevel>Ultra</techLevel>
+        <ingestible>
+            <drugCategory>Medical</drugCategory>
+            <outcomeDoers>
+                <li Class="IngestionOutcomeDoer_GiveHediff">
+                    <hediffDef>GeenSeedAdaptionCustodes</hediffDef>
+                    <severity>0.1</severity>
+                    <doToGeneratedPawnIfAddicted>true</doToGeneratedPawnIfAddicted>
+                </li>
+            </outcomeDoers>
+        </ingestible>
+        <comps>
+            <li Class="CompProperties_Drug">
+                <chemical>GeneSeed</chemical>
+                <addictiveness>0.00</addictiveness>
+                <needLevelOffset>1.00</needLevelOffset>
+                <listOrder>1011</listOrder>
+            </li>
+        </comps>
+        <tradeTags>
+            <li>ExoticMisc</li>
+        </tradeTags>
+    </ThingDef>
+    
+    <HediffDef Name="GeenSeedAdaption">
         <defName>GeenSeedAdaption</defName>
         <hediffClass>GeneSeed.GeneSeedHediffWithComps</hediffClass>
         <label>GeneSeed Growth</label>
@@ -228,10 +273,7 @@
         <label>GeneSeed</label>
         <canBinge>false</canBinge>
     </ChemicalDef>
-
-
-
-
+    
     <HediffDef>
         <defName>GeneSeedMutated</defName>
         <hediffClass>GeneSeed.GeneSeedMutationHediffWithComps</hediffClass>
@@ -299,5 +341,11 @@
                 </capMods>
             </li>
         </stages>
+    </HediffDef>
+    
+    <HediffDef ParentName="GeenSeedAdaption">
+        <defName>GeenSeedAdaptionCustodes</defName>
+        <hediffClass>GeneSeed.GeneSeedCustodesHediffWithComps</hediffClass>
+        <label>GeneSeed Growth</label>
     </HediffDef>
 </Defs>
