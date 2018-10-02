@@ -125,9 +125,10 @@ namespace GeneSeed
             pawn.DeSpawn();
             RegionListersUpdater.DeregisterInRegions(pawn, map);
 
-            if (changeDef && Constants.Astarte != null)
+            var thingDef = PawnThingDef();
+            if (changeDef && thingDef != null)
             {
-                pawn.def = Constants.Astarte;
+                pawn.def = thingDef;
             }
 
 
@@ -140,7 +141,7 @@ namespace GeneSeed
 
             //remove the 19
 
-            if (!BlowOffParts(keep)) RemoveAstarteParts();
+            if (BlowOffParts(keep)) RemoveAstarteParts();
 
             //decache graphics
             pawn.Drawer.renderer.graphics.ResolveAllGraphics();
@@ -151,9 +152,14 @@ namespace GeneSeed
             pawn.Position = map.Center;
         }
 
+        protected virtual ThingDef PawnThingDef()
+        {
+            return Constants.Astarte;
+        }
+
         protected virtual bool BlowOffParts(bool keep)
         {
-            return keep;
+            return !keep;
         }
 
         private void RemoveAstarteParts()

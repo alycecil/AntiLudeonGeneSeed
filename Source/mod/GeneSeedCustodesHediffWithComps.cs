@@ -1,3 +1,5 @@
+using Verse;
+
 namespace GeneSeed
 {
     public class GeneSeedCustodesHediffWithComps : GeneSeedHediffWithComps
@@ -13,6 +15,11 @@ namespace GeneSeed
             }
 
             return false;
+        }
+
+        protected override ThingDef PawnThingDef()
+        {
+            return Constants.Custodes;
         }
     }
 }

@@ -39,5 +39,6 @@ namespace GeneSeed
         };
 
         public static ThingDef Astarte = ThingDef.Named("AstarteSpaceMarine");
+        public static ThingDef Custodes = ThingDef.Named("AdaptusCustodes");
     }
 }
