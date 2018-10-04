@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using GeneSeed.crossmods;
 using GeneSeed.Organs;
-using Harmony;
 using RimWorld;
 using Verse;
 
@@ -20,9 +20,9 @@ namespace GeneSeed
             GeneSeedMutation();
 
             RestoreOrgan();
-            
+
             ticks %= 3010349; //my favorite prime
-            
+
             base.Tick();
         }
 
@@ -39,6 +39,21 @@ namespace GeneSeed
                     GeneSeedOrganHelper.apply(pawn, part, this);
 
                     break;
+                }
+            }
+
+            foreach (Pair<BodyPartDef, HediffDef> pair in ImperialGuard.AstarteBodyParts)
+            {
+                if (pair.Second == null || pair.First == null) continue;
+
+                if (pawn.health.hediffSet.HasHediff(pair.Second)) continue;
+
+                foreach (var part in pawn.def.race.body.GetPartsWithDef(pair.First))
+                {
+                    if (part == null || pawn.health.hediffSet.PartIsMissing(part)) continue;
+
+                    var diff = pawn.health.AddHediff(pair.Second, part);
+                    diff.Severity = Rand.Value;
                 }
             }
         }
@@ -73,10 +88,11 @@ namespace GeneSeed
             checkAllThatInsidesForGunk();
             this.Severity -= 0.05f;
         }
-        
+
         public override void PostAdd(DamageInfo? dinfo)
         {
-            if (pawn.RaceProps.Humanlike && (pawn.def == ThingDefOf.Human || ThingDefOf.Human.race.body.defName == pawn.def.race.body.defName))
+            if (pawn.RaceProps.Humanlike && (pawn.def == ThingDefOf.Human ||
+                                             ThingDefOf.Human.race.body.defName == pawn.def.race.body.defName))
                 TransformPawn();
 
             base.PostAdd(dinfo);
@@ -159,7 +175,8 @@ namespace GeneSeed
             bool ohHellNahWeAMutant = false;
             foreach (BodyPartDef astarteBodyPart in Constants.AstarteBodyParts)
             {
-                IEnumerable<BodyPartRecord> bodyPartRecords = pawn.def.race.body.GetPartsWithDef(astarteBodyPart).ToList();
+                IEnumerable<BodyPartRecord> bodyPartRecords =
+                    pawn.def.race.body.GetPartsWithDef(astarteBodyPart).ToList();
                 if (bodyPartRecords.Count() <= 1) continue;
                 ohHellNahWeAMutant = true;
                 Log.Message(

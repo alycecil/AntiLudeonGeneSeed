@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using RimWorld;
 using Verse;
 
 namespace GeneSeed.crossmods
 {
     public static class AdeptusMechanicus_Patch
     {
+        public static HediffDef RadiationPoisioning = DefDatabase<HediffDef>.GetNamedSilentFail("RadiationPoisioning");
+        
         public static void DealWithMissingWargearParts(ThingDef thingDef)
         {
             try

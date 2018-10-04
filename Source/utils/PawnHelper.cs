@@ -59,6 +59,7 @@ namespace GeneSeed
 
         public static void ClenseBad(Pawn pawn, HediffDef hediffDef)
         {
+            if (hediffDef == null || pawn == null) return;
             var toxic = pawn.health.hediffSet.GetFirstHediffOfDef(hediffDef);
             if (toxic != null)
             {
