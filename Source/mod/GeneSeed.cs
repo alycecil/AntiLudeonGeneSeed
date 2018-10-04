@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Reflection.Emit;
+using GeneSeed.crossmods;
 using Harmony;
 using RimWorld;
 using Verse;
@@ -17,40 +16,71 @@ namespace GeneSeed
             var harmony = HarmonyInstance.Create("acecil.rimworld.geneseeds");
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
-        
-        
-        [HarmonyPatch(typeof(GenRecipe), "MakeRecipeProducts", null)]
-        public static class GenRecipe_MakeRecipeProducts_Patch
+
+        static void DealWithAstarteMissingParts(ThingDef thingDef)
         {
-            [HarmonyPostfix]
-            public static void Postfix(ref IEnumerable<Thing> __result, RecipeDef recipeDef, Pawn worker, List<Thing> ingredients)
+            //if (pawn.def != Constants.Astarte) return;
+            bool hadParts = false;
+            foreach (BodyPartDef astarteBodyPart in Constants.AstarteBodyParts)
             {
-                List<Thing> list = (__result as List<Thing>) ?? __result.ToList<Thing>();
-                
-                foreach (Corpse corpse in ingredients.OfType<Corpse>()
-                    .Where(corpse=>corpse.InnerPawn != null && PawnHelper.is_human(corpse.InnerPawn)))
+                if (hadParts) break;
+                foreach (var part in thingDef.race.body.GetPartsWithDef(astarteBodyPart))
                 {
-
-                    Thing var = ThingMaker.MakeThing(Constants.GeneSeed);
-                    
-
-                    if (var != null )
-                    {
-                        //if astarte more.
-                        var.stackCount = corpse.InnerPawn.def == Constants.Astarte ? 20 : 1;
-                        
-                        list.Add(var);
-                    }
-                    else
-                    {
-                        Log.Error("Failed to make GeneSeed");
-                    }
+                    hadParts = true;
+                    break;
                 }
-
-                __result = list;
-                return;
             }
+
+            if (hadParts) return;
+            Log.Message("[" + thingDef + "] is missing the 19.");
+            foreach (BodyPartDef warGear in Constants.AstarteBodyParts)
+            {
+                thingDef.race.body.corePart.parts.Add(new BodyPartRecord
+                {
+                    coverage = 0f,
+                    def = warGear,
+                    depth = BodyPartDepth.Undefined,
+                    groups = new List<BodyPartGroupDef>(new[] {BodyPartGroupDefOf.Torso}),
+                    height = BodyPartHeight.Middle
+                });
+            }
+
+            thingDef.race.body.ResolveReferences();
         }
+    }
+
+    [HarmonyPatch(typeof(GenRecipe), "MakeRecipeProducts", null)]
+    public static class GenRecipe_MakeRecipeProducts_Patch
+    {
+        [HarmonyPostfix]
+        public static void Postfix(ref IEnumerable<Thing> __result, RecipeDef recipeDef, Pawn worker,
+            List<Thing> ingredients)
+        {
+            List<Thing> list = (__result as List<Thing>) ?? __result.ToList<Thing>();
+
+            foreach (Corpse corpse in ingredients.OfType<Corpse>()
+                .Where(corpse => corpse.InnerPawn != null && PawnHelper.is_human(corpse.InnerPawn)))
+            {
+                Thing var = ThingMaker.MakeThing(Constants.GeneSeed);
+
+
+                if (var != null)
+                {
+                    //if astarte more.
+                    var.stackCount = corpse.InnerPawn.def == Constants.Astarte ? 20 : 1;
+
+                    list.Add(var);
+                }
+                else
+                {
+                    Log.Error("Failed to make GeneSeed");
+                }
+            }
+
+            __result = list;
+            return;
+        }
+    }
 
 
     [HarmonyPatch(typeof(WorkGiver_GatherAnimalBodyResources), "HasJobOnThing")]
@@ -60,15 +90,36 @@ namespace GeneSeed
         static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             var codes = new List<CodeInstruction>(instructions);
-            
+
             foreach (var code in codes)
             {
                 if ("Boolean get_Animal()".Equals(code.operand?.ToString()))
-                    Log.Message("[GeneSeed:Transpiler] WorkGiver_GatherAnimalBodyResources works on all things with races instead of just animals.");
+                    Log.Message(
+                        "[GeneSeed:Transpiler] WorkGiver_GatherAnimalBodyResources works on all things with races instead of just animals.");
                 else
                     yield return code;
             }
         }
     }
+
+    [HarmonyPatch(typeof(DefGenerator), "GenerateImpliedDefs_PreResolve")]
+    public static class DefGenerator_GenerateImpliedDefs_PreResolve
+    {
+        [HarmonyPostfix]
+        public static void Postfix()
+        {
+            Log.Message("Adding Adaptus Recipe");
+            var thingDef = DefDatabase<ThingDef>.GetNamed("AstarteAdaptusCore");
+
+
+            foreach (var recipe in ThingDefOf.Human.recipes)
+            {
+                Log.Message("Adding : " + recipe);
+                thingDef.recipes.Add(recipe);
+            }
+
+
+            AdeptusMechanicus_Patch.DealWithMissingWargearParts(thingDef);
+        }
     }
 }

@@ -20,43 +20,10 @@ namespace GeneSeed
             GeneSeedMutation();
 
             RestoreOrgan();
-
-            DealWithMissingParts();
+            
             ticks %= 3010349; //my favorite prime
             
             base.Tick();
-        }
-
-        private void DealWithMissingParts()
-        {
-            if (pawn.def != Constants.Astarte) return;
-            bool hadParts = false;
-            foreach (BodyPartDef astarteBodyPart in Constants.AstarteBodyParts)
-            {
-                if (hadParts) break;
-                foreach (var part in pawn.def.race.body.GetPartsWithDef(astarteBodyPart))
-                {
-                    hadParts = true;
-                    break;
-                }
-            }
-
-            if (hadParts) return;
-            Log.Message("[" + pawn + "] is missing the 19.");
-            foreach (BodyPartDef astarteBodyPart in Constants.AstarteBodyParts)
-            {
-                pawn.def.race.body.corePart.parts.Add(new BodyPartRecord
-                {
-                    coverage = 0.0001f,
-                    def = astarteBodyPart,
-                    depth = BodyPartDepth.Undefined,
-                    groups = new List<BodyPartGroupDef>(new[] {BodyPartGroupDefOf.Torso}),
-                    height = BodyPartHeight.Middle
-                });
-            }
-
-            pawn.def.race.body.ResolveReferences();
-            TransformPawn(false, true);
         }
 
         private void OrganFunctions()
