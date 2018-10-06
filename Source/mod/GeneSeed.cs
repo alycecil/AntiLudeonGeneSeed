@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using GeneSeed.crossmods;
+using GeneSeed.settings;
 using Harmony;
 using RimWorld;
 using Verse;
@@ -120,6 +121,8 @@ namespace GeneSeed
 
 
             AdeptusMechanicus_Patch.DealWithMissingWargearParts(thingDef);
+            
+            SettingsHelper.latest.update();
         }
     }
 }

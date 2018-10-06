@@ -14,7 +14,7 @@ namespace GeneSeed.settings
         public WoohooMod(ModContentPack content) : base(content)
         {
             this.settings = GetSettings<GeneSeedSettings>();
-            WoohooSettingHelper.latest = this.settings;
+            SettingsHelper.latest = this.settings;
         }
 
 
@@ -22,13 +22,17 @@ namespace GeneSeed.settings
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
-                
-                
             this.settings.astartePunchingFactor = Widgets.HorizontalSlider(inRect.TopHalf().TopHalf().TopHalf().ContractedBy(4),
                 this.settings.astartePunchingFactor, 0f, 5f, true,
                 "Astarte Punching Power : " + this.settings.astartePunchingFactor*100 +
                 "% Range : ["+15f*this.settings.astartePunchingFactor+","+80f*this.settings.astartePunchingFactor+"]\nDefault possible in single attack (Punch 15, Caustic Spit 80 at 100%)"
-                , "0%", "500%");
+                , "0%", "500%");    
+                
+            this.settings.scale = Widgets.HorizontalSlider(inRect.TopHalf().TopHalf().BottomHalf().ContractedBy(4),
+                this.settings.scale, 0f, 2f, true,
+                "Astarte Size Scaler: " + this.settings.astartePunchingFactor*100 +
+                "% for size of "+3f*this.settings.scale
+                , "0%", "200%");
 
             Widgets.Label(inRect.BottomHalf().BottomHalf().BottomHalf(), "That's all, restart before playing to ensure your change is there. -Alice.\nSource Code Available at https://github.com/alycecil");
             this.settings.Write();
@@ -37,15 +41,14 @@ namespace GeneSeed.settings
     
     class GeneSeedSettings : ModSettings
     {
-        public float astartePunchingFactor = base_astartePunchingFactor;
+        public float astartePunchingFactor = 1f, scale = 1f;
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Values.Look(ref this.astartePunchingFactor, "astartePunchingFactor", base_astartePunchingFactor);
+            Scribe_Values.Look(ref this.astartePunchingFactor, "astartePunchingFactor", 1f);
+            Scribe_Values.Look(ref this.scale, "scale", 1f);
         }
 
-
-        static readonly float base_astartePunchingFactor = 80f;
 
         public void update()
         {
@@ -53,6 +56,9 @@ namespace GeneSeed.settings
             {
                 astarteTool.power *= astartePunchingFactor;
             }
+
+            Constants.Astarte.race.baseBodySize *= scale;
+            Constants.Custodes.race.baseBodySize *= scale;
         }
     }
 }
