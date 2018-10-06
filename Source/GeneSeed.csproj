@@ -80,6 +80,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utils\Constants.cs" />
     <Compile Include="utils\PawnHelper.cs" />
+    <Compile Include="utils\settings\ModSettings.cs" />
+    <Compile Include="utils\settings\WoohooSettingHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="mod\DuplicatedBull" />
