@@ -25,15 +25,14 @@ namespace GeneSeed.settings
                 inRect.TopHalf().TopHalf().TopHalf().ContractedBy(4),
                 this.settings.astartePunchingFactor, 0f, 5f, true,
                 "Astarte Punching Power : " + this.settings.astartePunchingFactor * 100 +
-                "% Range : [" + 15f * this.settings.astartePunchingFactor + "," +
-                80f * this.settings.astartePunchingFactor + "]\nDefault possible in single attack (Punch 15 at 100%)"
+                "% : [" + 15f * this.settings.astartePunchingFactor+ "]\nDefault possible in single attack (Punch 15 at 100%)"
                 , "0%", "500%");
 
             this.settings.astarteSplitFactor = Widgets.HorizontalSlider(
                 inRect.TopHalf().TopHalf().BottomHalf().ContractedBy(4),
                 this.settings.astarteSplitFactor, 0f, 5f, true,
-                "Astarte Punching Power : " + this.settings.astarteSplitFactor * 100 +
-                "% Range : [" + 15f * this.settings.astarteSplitFactor + "," + 80f * this.settings.astarteSplitFactor +
+                "Astarte Spit Power : " + this.settings.astarteSplitFactor * 100 +
+                "% : [" + 80f * this.settings.astarteSplitFactor +
                 "]\nDefault possible in single attack (Caustic Spit 80 at 100%)"
                 , "0%", "500%");
 
