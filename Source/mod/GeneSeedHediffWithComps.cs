@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GeneSeed.crossmods;
 using GeneSeed.Organs;
+using GeneSeed.settings;
 using RimWorld;
 using Verse;
 
@@ -85,14 +86,16 @@ namespace GeneSeed
             }
 
             if (!didOne) return;
-            checkAllThatInsidesForGunk();
+            //checkAllThatInsidesForGunk();
             this.Severity -= 0.05f;
         }
 
         public override void PostAdd(DamageInfo? dinfo)
         {
             if (pawn.RaceProps.Humanlike && (pawn.def == ThingDefOf.Human ||
-                                             ThingDefOf.Human.race.body.defName == pawn.def.race.body.defName))
+                                             ThingDefOf.Human.race.body.defName == pawn.def.race.body.defName ||
+                                             SettingsHelper.latest.n17Rimhammer && (pawn.def == N17Rimhammer.HumanAlt || pawn.def == N17Rimhammer.HumanAlt2 || pawn.def == N17Rimhammer.HumanAlt3))
+                )
                 TransformPawn();
 
             base.PostAdd(dinfo);
@@ -137,11 +140,14 @@ namespace GeneSeed
 
         protected virtual ThingDef PawnThingDef()
         {
+            if (SettingsHelper.latest.n17Rimhammer && N17Rimhammer.AstartesAlt != null) return N17Rimhammer.AstartesAlt;
+            
             return Constants.Astarte;
         }
 
         protected virtual bool BlowOffParts(bool keep)
         {
+            if (SettingsHelper.latest.instantTransform) return false; 
             return !keep;
         }
 
