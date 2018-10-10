@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="mod\crossmods\AdeptusMechanicus.cs" />
     <Compile Include="mod\crossmods\ImperialGuard.cs" />
+    <Compile Include="mod\crossmods\N17Rimhammer.cs" />
     <Compile Include="mod\GeneSeed.cs" />
     <Compile Include="mod\GeneSeedCustodesHediffWithComps.cs" />
     <Compile Include="mod\GeneSeedHediffWithComps.cs" />

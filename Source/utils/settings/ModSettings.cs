@@ -41,6 +41,12 @@ namespace GeneSeed.settings
                 "Astarte Size Scaler: " + this.settings.astartePunchingFactor * 100 +
                 "% for size of " + 3f * this.settings.scale
                 , "0%", "200%");
+            
+            Widgets.CheckboxLabeled(inRect.TopHalf().BottomHalf().BottomHalf().LeftHalf().ContractedBy(4), "n17Rimhammer Space Marine Geneseed?\n(does not affect existing adaptus)", ref settings.n17Rimhammer);
+            
+            
+            Widgets.CheckboxLabeled(inRect.TopHalf().BottomHalf().BottomHalf().RightHalf().ContractedBy(4), "Cheat Mode\n(Organs included, very easy super soldiers)", ref settings.instantTransform);
+            
 
             Widgets.Label(inRect.BottomHalf().BottomHalf().BottomHalf(),
                 "That's all, restart before playing to ensure your change is there. -Alice.\nSource Code Available at https://github.com/alycecil");
@@ -51,6 +57,7 @@ namespace GeneSeed.settings
     class GeneSeedSettings : ModSettings
     {
         public float astartePunchingFactor = 1f, astarteSplitFactor = 1f, scale = 1f;
+        public bool n17Rimhammer, instantTransform;
 
         public override void ExposeData()
         {
@@ -58,6 +65,8 @@ namespace GeneSeed.settings
             Scribe_Values.Look(ref this.astartePunchingFactor, "astartePunchingFactor", 1f);
             Scribe_Values.Look(ref this.astarteSplitFactor, "astarteSplitFactor", 1f);
             Scribe_Values.Look(ref this.scale, "scale", 1f);
+            Scribe_Values.Look(ref this.n17Rimhammer, "n17Rimhammer", false);
+            Scribe_Values.Look(ref this.instantTransform, "instantTransform", false);
         }
 
 

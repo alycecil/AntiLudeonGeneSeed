@@ -18,25 +18,18 @@ namespace GeneSeed
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
-        static void DealWithAstarteMissingParts(ThingDef thingDef)
+        public static void DealWithAstarteMissingParts(BodyDef raceBody)
         {
-            //if (pawn.def != Constants.Astarte) return;
-            bool hadParts = false;
-            foreach (BodyPartDef astarteBodyPart in Constants.AstarteBodyParts)
+            foreach (BodyPartDef warGear in Constants.AstarteBodyParts)
             {
-                if (hadParts) break;
-                foreach (var part in thingDef.race.body.GetPartsWithDef(astarteBodyPart))
+                bool hadParts = false;
+                foreach (var part in raceBody.GetPartsWithDef(warGear))
                 {
                     hadParts = true;
                     break;
                 }
-            }
-
-            if (hadParts) return;
-            Log.Message("[" + thingDef + "] is missing the 19.");
-            foreach (BodyPartDef warGear in Constants.AstarteBodyParts)
-            {
-                thingDef.race.body.corePart.parts.Add(new BodyPartRecord
+                
+                raceBody.corePart.parts.Add(new BodyPartRecord
                 {
                     coverage = 0f,
                     def = warGear,
@@ -46,7 +39,7 @@ namespace GeneSeed
                 });
             }
 
-            thingDef.race.body.ResolveReferences();
+            raceBody.ResolveReferences();
         }
     }
 
@@ -122,6 +115,8 @@ namespace GeneSeed
 
             AdeptusMechanicus_Patch.DealWithMissingWargearParts(thingDef);
             
+            N17Rimhammer.PatchBody();
+
             SettingsHelper.latest.update();
         }
     }
