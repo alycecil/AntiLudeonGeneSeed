@@ -95,6 +95,22 @@ namespace GeneSeed
             }
         }
     }
+    
+    
+    [HarmonyPatch(typeof(MassUtility), "Capacity", null)]
+    public static class GeneSeed_MassUtility_Capacity
+    {
+        [HarmonyPostfix]
+        public static void Postfix(ref float __result, Pawn p)
+        {
+
+            if (p.health.hediffSet.hediffs.Any(x => x.def.defName.StartsWith("GeenSeedAdaption")))
+            {
+                __result += 1.2f * p.GetStatValue(StatDefOf.Mass);
+            }
+        }
+    }
+    
 
     [HarmonyPatch(typeof(DefGenerator), "GenerateImpliedDefs_PreResolve")]
     public static class DefGenerator_GenerateImpliedDefs_PreResolve
