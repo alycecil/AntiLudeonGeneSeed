@@ -167,10 +167,10 @@
                     <li>Bite</li>
                 </capacities>
                 <power>80</power>
-                <cooldownTime>13</cooldownTime>
+                <cooldownTime>3</cooldownTime>
                 <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
                 <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
-                <chanceFactor>0.2</chanceFactor>
+                <chanceFactor>0.02</chanceFactor>
             </li>
         </tools>
         <race>
