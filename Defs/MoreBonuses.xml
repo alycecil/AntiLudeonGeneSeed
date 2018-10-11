@@ -145,6 +145,7 @@
 
 
     <HediffDef ParentName="AwesomeOrgans">
+        <ignoreConfigErrors>true</ignoreConfigErrors><!--Immune to something unexpected-->
         <defName>AwesomeOrgans_Biscopea</defName>
         <label>Biscopea</label>
         <description>The Biscopea, also called the Forge of Strength, is the 3rd of the 19 gene-seed organs implanted
@@ -277,6 +278,7 @@
 
 
     <HediffDef ParentName="AwesomeOrgans">
+        <ignoreConfigErrors>true</ignoreConfigErrors><!--Immune to something unexpected-->
         <defName>AwesomeOrgans_Preomnor</defName>
         <label>Preomnor</label>
         <description>The Preomnor, also called the Neutraliser, is the 7th of the 19 gene-seed organs that are implanted
@@ -374,6 +376,7 @@
         </stages>
     </HediffDef>
     <HediffDef ParentName="AwesomeOrgans">
+        <ignoreConfigErrors>true</ignoreConfigErrors><!--Immune to something unexpected-->
         <defName>AwesomeOrgans_Occulobe</defName>
         <label>Occulobe Augmentation</label>
         <description>The Occulobe, also called the Eye of Vengeance, is the 10th of the 19 genetically-engineered
@@ -409,6 +412,7 @@
 
 
     <HediffDef ParentName="AwesomeOrgans">
+        <ignoreConfigErrors>true</ignoreConfigErrors><!--Immune to something unexpected-->
         <defName>AwesomeOrgans_LymanEar</defName>
         <label>Lyman's Ear</label>
         <description>The Lyman's Ear, also called the Sentinel, is the 11th of the 19 genetically-engineered gene-seed
@@ -476,6 +480,7 @@
 
 
     <HediffDef ParentName="AwesomeOrgans">
+        <ignoreConfigErrors>true</ignoreConfigErrors><!--Immune to something unexpected-->
         <defName>AwesomeOrgans_Melanochrome</defName>
         <label>Melanochrome</label>
         <description>The Melanochrome, also called the Skinshield, is the 13th of the 19 genetically-engineered
