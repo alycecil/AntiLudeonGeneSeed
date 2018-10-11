@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using GeneSeed.crossmods;
@@ -43,6 +44,12 @@ namespace GeneSeed
                 }
             }
 
+            MoreBetterHediffs();
+        }
+
+        private void MoreBetterHediffs()
+        {
+            if (ticks % 2500 != 0) return;
             foreach (Pair<BodyPartDef, HediffDef> pair in ImperialGuard.AstarteBodyParts)
             {
                 if (pair.Second == null || pair.First == null) continue;
@@ -55,6 +62,30 @@ namespace GeneSeed
 
                     var diff = pawn.health.AddHediff(pair.Second, part);
                     diff.Severity = Rand.Value;
+                }
+            }
+
+            if (SettingsHelper.latest.n17Rimhammer) return;
+
+            foreach (Pair<BodyPartDef, HediffDef> pair in GeneSeedOrganHelper.AstarteBodyParts)
+            {
+                if (pair.Second == null || pair.First == null) continue;
+
+                try
+                {
+                    if (pawn.health.hediffSet.HasHediff(pair.Second)) continue;
+
+                    foreach (var part in pawn.def.race.body.GetPartsWithDef(pair.First))
+                    {
+                        if (part == null || pawn.health.hediffSet.PartIsMissing(part)) continue;
+
+                        var diff = pawn.health.AddHediff(pair.Second, part);
+                        diff.Severity = Rand.Value;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Log.Message("Failed to put something somewhere" + e.StackTrace);
                 }
             }
         }
@@ -94,8 +125,10 @@ namespace GeneSeed
         {
             if (pawn.RaceProps.Humanlike && (pawn.def == ThingDefOf.Human ||
                                              ThingDefOf.Human.race.body.defName == pawn.def.race.body.defName ||
-                                             SettingsHelper.latest.n17Rimhammer && (pawn.def == N17Rimhammer.HumanAlt || pawn.def == N17Rimhammer.HumanAlt2 || pawn.def == N17Rimhammer.HumanAlt3))
-                )
+                                             SettingsHelper.latest.n17Rimhammer &&
+                                             (pawn.def == N17Rimhammer.HumanAlt || pawn.def == N17Rimhammer.HumanAlt2 ||
+                                              pawn.def == N17Rimhammer.HumanAlt3))
+            )
                 TransformPawn();
 
             base.PostAdd(dinfo);
@@ -141,13 +174,13 @@ namespace GeneSeed
         protected virtual ThingDef PawnThingDef()
         {
             if (SettingsHelper.latest.n17Rimhammer && N17Rimhammer.AstartesAlt != null) return N17Rimhammer.AstartesAlt;
-            
+
             return Constants.Astarte;
         }
 
         protected virtual bool BlowOffParts(bool keep)
         {
-            if (SettingsHelper.latest.instantTransform) return false; 
+            if (SettingsHelper.latest.instantTransform) return false;
             return !keep;
         }
 

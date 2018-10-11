@@ -13,13 +13,12 @@ namespace GeneSeed.Organs
                 if (apparel.WornByCorpse)
                 {
                     apparel.Notify_PawnResurrected();//Artifacts are good.
-                    apparel.HitPoints = (int) Math.Max(apparel.HitPoints, apparel.MaxHitPoints/1.095f);
                     
                     CompQuality compQuality = apparel.TryGetComp<CompQuality>();
                     compQuality.SetQuality(QualityCategory.Legendary, ArtGenerationContext.Colony);
                 }
                 
-                apparel.HitPoints = (int) Math.Max(apparel.HitPoints, apparel.MaxHitPoints/1.88f);
+                apparel.HitPoints = (int) Math.Max(apparel.HitPoints, apparel.MaxHitPoints);
             }
         }
     }
