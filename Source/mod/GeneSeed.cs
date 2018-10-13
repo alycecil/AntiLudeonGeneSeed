@@ -39,7 +39,7 @@ namespace GeneSeed
                 });
             }
 
-            raceBody.ResolveReferences();
+            //raceBody.ResolveReferences();
         }
     }
 

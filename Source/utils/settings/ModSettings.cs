@@ -56,7 +56,7 @@ namespace GeneSeed.settings
 
     class GeneSeedSettings : ModSettings
     {
-        public float astartePunchingFactor = 1f, astarteSplitFactor = 1f, scale = 1f;
+        public float astartePunchingFactor = 1f, astarteSplitFactor = 1f, scale = 1f, transportPodSize = 5000;
         public bool n17Rimhammer, instantTransform;
 
         public override void ExposeData()
