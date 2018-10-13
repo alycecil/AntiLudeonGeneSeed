@@ -25,7 +25,11 @@ namespace GeneSeed.crossmods
 
                 AddPartToThing(thingDef, AdeptusMechanicus_BodyPartDef.OGNeuralLink,
                     AdeptusMechanicus_BodyPartGroupDef.OGNeuralLink, "neural link");
-                //thingDef.race.body.ResolveReferences();
+                
+                
+                //clear cache
+                thingDef.race.body.AllParts.Clear();
+                thingDef.race.body.ResolveReferences();
             }catch(Exception){}
         }
 

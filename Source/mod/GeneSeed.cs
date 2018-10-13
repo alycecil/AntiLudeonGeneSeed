@@ -29,6 +29,8 @@ namespace GeneSeed
                     break;
                 }
                 
+                if(hadParts) continue;
+                
                 raceBody.corePart.parts.Add(new BodyPartRecord
                 {
                     coverage = 0f,
@@ -39,7 +41,9 @@ namespace GeneSeed
                 });
             }
 
-            //raceBody.ResolveReferences();
+            //clear cache
+            raceBody.AllParts.Clear();
+            raceBody.ResolveReferences();
         }
     }
 
