@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<name>[WarHammer 40k] GeneSeed</name>
-	<author>AliceTries</author>
-	<targetVersion>0.19.2009</targetVersion>
+	<author>AliceTries, updated by Ogliss</author>
+	<supportedVersions>
+        <li>1.0</li>
+        <li>1.1</li>
+	</supportedVersions>
+   <packageId>Ogliss.AliceTries.GeneSeed</packageId>
 	<description>Gene-Seed, the cure for rejection of the additional 19 organ implants on the path to becoming a super human. Mutates your pawns genetic code to be better down to every last cell.
 
 		Slaughter and Butcher Human like to get GeneSeed. Take it to become a Astarte, complete with all bonus organs for optimal crusading.
