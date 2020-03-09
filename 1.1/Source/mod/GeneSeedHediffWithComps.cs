@@ -141,7 +141,7 @@ namespace GeneSeed
 
             var map = pawn.Map;
             pawn.DestroyOrPassToWorld();
-            pawn.DeSpawn();
+        //    pawn.DeSpawn();
             RegionListersUpdater.DeregisterInRegions(pawn, map);
 
             var thingDef = PawnThingDef();
@@ -151,7 +151,7 @@ namespace GeneSeed
             }
 
 
-            pawn.SpawnSetup(map, true);
+        //    pawn.SpawnSetup(map, true);
 
             RegionListersUpdater.RegisterInRegions(pawn, map);
 
@@ -168,7 +168,7 @@ namespace GeneSeed
             //save the pawn
             pawn.ExposeData();
 
-            pawn.Position = map.Center;
+        //    pawn.Position = map.Center;
         }
 
         protected virtual ThingDef PawnThingDef()
