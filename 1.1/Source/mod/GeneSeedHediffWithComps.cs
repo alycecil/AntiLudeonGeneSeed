@@ -140,7 +140,7 @@ namespace GeneSeed
             var where = pawn.Position;
 
             var map = pawn.Map;
-            pawn.DestroyOrPassToWorld();
+        //   pawn.DestroyOrPassToWorld();
         //    pawn.DeSpawn();
             RegionListersUpdater.DeregisterInRegions(pawn, map);
 
