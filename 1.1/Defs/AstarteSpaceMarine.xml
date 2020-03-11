@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-    <ThingDef Name="AstarteAdaptusCore" ParentName="BasePawn">
+    <ThingDef Name="AstarteAdaptusCore" ParentName="HumanRace">
         <defName>AstarteAdaptusCore</defName>
         <label>AstarteAdaptusCore</label>
         <description>A human, modified by gene engineering and designed evolutionary pressures.</description>
@@ -26,7 +26,7 @@
             <meatMarketValue>0.8</meatMarketValue>
             <manhunterOnDamageChance>0.20</manhunterOnDamageChance>
             <manhunterOnTameFailChance>0.02</manhunterOnTameFailChance>
-            <litterSizeCurve>
+            <litterSizeCurve Inherit="false">
                 <points>
                     <li>(0.5, 0)</li>
                     <li>(1, 1)</li>
@@ -34,7 +34,7 @@
                     <li>(3.5, 0)</li>
                 </points>
             </litterSizeCurve>
-            <lifeStageAges>
+            <lifeStageAges Inherit="false">
                 <li>
                     <def>HumanlikeBaby</def>
                     <minAge>0</minAge>
@@ -63,7 +63,7 @@
                 <volume>(0.3, 0.8, 0.4)</volume>
                 <offset>(0,0,-0.3)</offset>
             </specialShadowData>
-            <ageGenerationCurve>
+            <ageGenerationCurve Inherit="false">
                 <points>
                     <li>(8,0)</li>
                     <li>(10,100)</li>
@@ -75,9 +75,9 @@
                     <li>(5000,0)</li>
                 </points>
             </ageGenerationCurve>
-            <hediffGiverSets>
-                <li>OrganicStandard</li>
-                <li>Human</li>
+            <hediffGiverSets Inherit="false">
+                <!--li>OrganicStandard</li-->
+                <!--li>Human</li-->
             </hediffGiverSets>
         </race>
         <recipes>
@@ -179,8 +179,6 @@
             <baseHealthScale>10</baseHealthScale>
         </race>
     </ThingDef>
-
-
 
     <ThingDef ParentName="AstarteAdaptusCore">
         <defName>AdaptusCustodes</defName>
