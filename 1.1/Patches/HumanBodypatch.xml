@@ -476,6 +476,20 @@
 					</operations>
 				</nomatch>
 			</li>
+			<li Class="PatchOperationAdd">
+			  <xpath>/Defs/RecipeDef[@Name="SurgeryInstallImplantBase"]/recipeUsers</xpath>
+				<value>
+					<li>AstarteSpaceMarine</li>
+					<li>AdaptusCustodes</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd">
+			  <xpath>/Defs/RecipeDef[@Name="SurgeryRemoveImplantBase"]/recipeUsers</xpath>
+				<value>
+					<li>AstarteSpaceMarine</li>
+					<li>AdaptusCustodes</li>
+				</value>
+			</li>
 		</operations>	
 	</Operation>
 	 

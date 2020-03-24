@@ -28,7 +28,7 @@
                 <capMods>
                     <li>
                         <capacity>Breathing</capacity>
-                        <offset>0.01</offset>
+                        <offset>0.000</offset>
                     </li>
                 </capMods>
             </li>
@@ -40,7 +40,7 @@
                 <capMods>
                     <li>
                         <capacity>Breathing</capacity>
-                        <offset>0.05</offset>
+                        <offset>0.00</offset>
                     </li>
                 </capMods>
             </li>
@@ -52,7 +52,7 @@
                 <capMods>
                     <li>
                         <capacity>Breathing</capacity>
-                        <offset>0.15</offset>
+                        <offset>0.00</offset>
                     </li>
                 </capMods>
             </li>
@@ -73,7 +73,7 @@
                 <capMods>
                     <li>
                         <capacity>Breathing</capacity>
-                        <offset>0.2</offset>
+                        <offset>0.0</offset>
                     </li>
                 </capMods>
             </li>

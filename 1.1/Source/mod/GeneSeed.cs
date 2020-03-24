@@ -118,20 +118,26 @@ namespace GeneSeed
         [HarmonyPostfix]
         public static void Postfix()
         {
-            Log.Message("Adding Adaptus Recipe");
             var thingDef = DefDatabase<ThingDef>.GetNamed("AstarteAdaptusCore");
-
-
-            foreach (var recipe in ThingDefOf.Human.recipes)
-            {
-                Log.Message("Adding : " + recipe);
-                thingDef.recipes.Add(recipe);
-            }
-
-
-            AdeptusMechanicus_Patch.DealWithMissingWargearParts(thingDef);
+            /*
+            Log.Message(string.Format("Adding Recipes for Astartes Recipes: {0} Human Recipes: {1}", thingDef.AllRecipes.Count, ThingDefOf.Human.AllRecipes.Count));
             
-            N17Rimhammer.PatchBody();
+            int cur = 1;
+            foreach (RecipeDef recipe in ThingDefOf.Human.AllRecipes)
+            {
+            //    Log.Message(string.Format("checking Astartes Recipes: {0} {1}/{2}", recipe, cur, ThingDefOf.Human.AllRecipes.Count));
+                if (!thingDef.AllRecipes.Contains(recipe))
+                {
+                    Log.Message("Adding : " + recipe);
+                    thingDef.recipes.Add(recipe);
+                }
+                else
+                {
+                //    Log.Message("Skipping : " + recipe);
+                }
+                cur++;
+            }
+            */
 
             SettingsHelper.latest.update();
         }

@@ -80,9 +80,14 @@
                 <!--li>Human</li-->
             </hediffGiverSets>
         </race>
-        <recipes>
+        <recipes Inherit="false">
             <li>CheatAstartePart</li>
             <li>InstallAstartePart</li>
+            <li>ExciseCarcinoma</li>
+            <li>AdministerMechSerumHealer</li>
+            <li>RemoveBodyPart</li>
+            <li>Euthanize</li>
+            <li>Anesthetize</li>
         </recipes>
     </ThingDef>
     

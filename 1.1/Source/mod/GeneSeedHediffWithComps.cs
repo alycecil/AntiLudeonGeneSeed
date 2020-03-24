@@ -147,9 +147,12 @@ namespace GeneSeed
             var thingDef = PawnThingDef();
             if (changeDef && thingDef != null)
             {
+                HediffSet set = pawn.health.hediffSet;
                 pawn.def = thingDef;
+                pawn.health = new Pawn_HealthTracker(pawn);
+                pawn.health.hediffSet.DirtyCache();
+                pawn.health.hediffSet = set;
             }
-
 
         //    pawn.SpawnSetup(map, true);
 
