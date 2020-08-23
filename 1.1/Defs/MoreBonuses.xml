@@ -64,10 +64,10 @@
                 <statOffsets>
                     <Beauty>20</Beauty>
                     <Cleanliness>1</Cleanliness>
-                    <SocialImpact>1</SocialImpact>
+                    <SocialImpact>0.02</SocialImpact>
                     <CarryingCapacity>1.7</CarryingCapacity>
                     <MeatAmount>1.1</MeatAmount>
-                    <ForagedNutritionPerDay>2</ForagedNutritionPerDay>
+                    <ForagedNutritionPerDay>0.01</ForagedNutritionPerDay>
                     <Mass>1.1</Mass>
                 </statOffsets>
                 <capMods>

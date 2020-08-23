@@ -136,12 +136,12 @@ namespace GeneSeed
 
         private void TransformPawn(bool changeDef = true, bool keep = false)
         {
+            IntVec3 where = pawn.Position;
+            Map map = pawn.Map;
             //Body change to Astarte
-            var where = pawn.Position;
 
-            var map = pawn.Map;
-        //   pawn.DestroyOrPassToWorld();
-        //    pawn.DeSpawn();
+            pawn.DeSpawn();
+        //    pawn.DestroyOrPassToWorld();
             RegionListersUpdater.DeregisterInRegions(pawn, map);
 
             var thingDef = PawnThingDef();
@@ -153,14 +153,12 @@ namespace GeneSeed
                 pawn.health.hediffSet.DirtyCache();
                 pawn.health.hediffSet = set;
             }
-
         //    pawn.SpawnSetup(map, true);
 
             RegionListersUpdater.RegisterInRegions(pawn, map);
 
 
             map.mapPawns.UpdateRegistryForPawn(pawn);
-
             //remove the 19
 
             if (BlowOffParts(keep)) RemoveAstarteParts();
@@ -171,7 +169,8 @@ namespace GeneSeed
             //save the pawn
             pawn.ExposeData();
 
-        //    pawn.Position = map.Center;
+            GenSpawn.Spawn(pawn, where, map);
+            //    pawn.Position = map.Center;
         }
 
         protected virtual ThingDef PawnThingDef()

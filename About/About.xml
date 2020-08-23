@@ -5,6 +5,7 @@
 	<supportedVersions>
         <li>1.0</li>
         <li>1.1</li>
+        <li>1.2</li>
 	</supportedVersions>
    <packageId>Ogliss.AliceTries.GeneSeed</packageId>
 	<description>Gene-Seed, the cure for rejection of the additional 19 organ implants on the path to becoming a super human. Mutates your pawns genetic code to be better down to every last cell.

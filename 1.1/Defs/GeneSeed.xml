@@ -259,7 +259,7 @@
                     </li>
                     <li>
                         <capacity>Breathing</capacity>
-                        <offset>1.20</offset>
+                        <offset>0.10</offset>
                     </li>
                 </capMods>
                 <statOffsets>
@@ -269,18 +269,27 @@
         </stages>
     </HediffDef>
     
-    <ChemicalDef>
-	<ignoreConfigErrors>true</ignoreConfigErrors><!--Immune to something unexpected-->
-        <defName>GeneSeed</defName>
-        <label>GeneSeed</label>
-        <canBinge>false</canBinge>
-    </ChemicalDef>
-    
-    
     <HediffDef ParentName="GeenSeedAdaption">
         <defName>GeenSeedAdaptionCustodes</defName>
         <hediffClass>GeneSeed.GeneSeedCustodesHediffWithComps</hediffClass>
         <label>GeneSeed Growth</label>
         <description>GeneSeed Growth</description>
     </HediffDef>
+	
+    <ChemicalDef>
+	<ignoreConfigErrors>true</ignoreConfigErrors>
+        <defName>GeneSeed</defName>
+        <label>GeneSeed</label>
+		<addictionHediff>SmokeleafAddiction</addictionHediff>
+        <canBinge>false</canBinge>
+    </ChemicalDef>
+    
+  <HediffDef ParentName="AddictionBase">
+    <defName>GeneSeedAddiction</defName>
+    <label>GeneSeed dependence</label>
+	<ignoreConfigErrors>true</ignoreConfigErrors>
+    <description>A chemical addiction to GeneSeed.</description>
+
+  </HediffDef>
+
 </Defs>
