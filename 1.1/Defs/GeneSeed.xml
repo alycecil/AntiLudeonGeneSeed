@@ -123,15 +123,15 @@
                     </li>
                     <li>
                         <capacity>Breathing</capacity>
-                        <offset>0.5</offset>
+                        <offset>0.25</offset>
                     </li>
                     <li>
                         <capacity>BloodFiltration</capacity>
-                        <offset>0.50</offset>
+                        <offset>0.250</offset>
                     </li>
                     <li>
                         <capacity>BloodPumping</capacity>
-                        <offset>0.5</offset>
+                        <offset>0.25</offset>
                     </li>
                 </capMods>
                 <statOffsets>
