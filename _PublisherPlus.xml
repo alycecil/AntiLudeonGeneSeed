@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Title>[WarHammer 40k] GeneSeed 1.1</Title>
+  <Excluded>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AntiLudeonGeneSeed\.git</exclude>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AntiLudeonGeneSeed\.vs</exclude>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AntiLudeonGeneSeed\1.0\Source</exclude>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AntiLudeonGeneSeed\1.1\.vs</exclude>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AntiLudeonGeneSeed\1.1\GeneSeed1.1.sln</exclude>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AntiLudeonGeneSeed\1.1\MigrationBackup</exclude>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AntiLudeonGeneSeed\1.1\Source</exclude>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AntiLudeonGeneSeed\GeneSeed - Release</exclude>
+    <exclude>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\AntiLudeonGeneSeed\GeneSeed.sln</exclude>
+  </Excluded>
+</Configuration>
